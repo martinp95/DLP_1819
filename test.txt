@@ -46,3 +46,15 @@ struct Empresa {
 };
 
 var microsoft: Empresa;
+
+//// ------------------------------
+//// DEFINICIONES de funciones
+
+dobleSuma(a:int, b:int): int {
+	var local:int;
+}
+
+dobleSuma(a:int, b:int){
+}
+
+
