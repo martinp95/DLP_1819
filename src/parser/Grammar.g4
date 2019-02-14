@@ -40,9 +40,25 @@ sentencia: 'print' expr ';'
 	| 'return' ';';
 
 parametrosOpt:
-				|
+			|expr
+			| parametrosOpt ',' expr;
 
-	
+expr: INT_CONSTANT
+	| REAL_CONSTANT
+	| IDENT
+	| CHAR
+	| '(' expr ')'
+	| 'cast' '<' tipo '>' '(' expr ')'
+	| expr ('*' | '/') expr
+	| expr ('+' | '-') expr
+	| expr ('<' | '>' | '<=' | '>=' | '==' | '!=') expr
+	| '!' expr
+	| expr '&&' expr
+	| expr '||' expr
+	| expr '[' expr ']'
+	| expr '.' IDENT
+	| IDENT '(' parametrosOpt ')';
+
 defStruct: 'struct' IDENT '{' campos '}' ';';
 
 campos: campo

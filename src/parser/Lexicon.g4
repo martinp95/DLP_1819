@@ -1,17 +1,15 @@
 lexer grammar Lexicon
 	;
-	
-INT_CONSTANT
-	: [0-9]+;
-
-REAL_CONSTANT
-	: [0-9]+'.'[0-9]+;
 
 IDENT
-	: [a-zA-Z]+[a-zA-Z0-9_]*;
+	: [a-zA-Z]+[a-zA-Z0-9_]*;	
+INT_CONSTANT
+	: [0-9]+;
+REAL_CONSTANT
+	: [0-9]+'.'[0-9]+;
 	
 CHAR
-	:'[a-zA-ZñÑ0-9() +\\-=*/]' | '\\n';
+	: '\''.'\''|'\\n';
 
 LINE_COMMENT
 	:'//' .*? '\n'	-> skip;
