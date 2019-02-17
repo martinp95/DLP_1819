@@ -29,7 +29,7 @@ sentencias:
 			
 sentencia: 'print' expr ';'														
 	| 'printsp' expr ';'															
-	| 'println' expr ';'														
+	| 'println' parametrosOpt ';'														
 	| 'read' expr ';'															
 	| expr '=' expr ';'															
 	| 'if' '(' expr ')' '{' sentencias '}'										

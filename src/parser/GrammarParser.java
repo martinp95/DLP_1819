@@ -607,6 +607,9 @@ public class GrammarParser extends Parser {
 		public ExprContext expr(int i) {
 			return getRuleContext(ExprContext.class,i);
 		}
+		public ParametrosOptContext parametrosOpt() {
+			return getRuleContext(ParametrosOptContext.class,0);
+		}
 		public List<SentenciasContext> sentencias() {
 			return getRuleContexts(SentenciasContext.class);
 		}
@@ -614,9 +617,6 @@ public class GrammarParser extends Parser {
 			return getRuleContext(SentenciasContext.class,i);
 		}
 		public TerminalNode IDENT() { return getToken(GrammarParser.IDENT, 0); }
-		public ParametrosOptContext parametrosOpt() {
-			return getRuleContext(ParametrosOptContext.class,0);
-		}
 		public SentenciaContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -658,7 +658,7 @@ public class GrammarParser extends Parser {
 				setState(111);
 				match(T__9);
 				setState(112);
-				expr(0);
+				parametrosOpt(0);
 				setState(113);
 				match(T__7);
 				}
@@ -1519,7 +1519,7 @@ public class GrammarParser extends Parser {
 		"\2\2\2`^\3\2\2\2af\b\t\1\2bc\f\3\2\2ce\5\22\n\2db\3\2\2\2eh\3\2\2\2fd"+
 		"\3\2\2\2fg\3\2\2\2g\21\3\2\2\2hf\3\2\2\2ij\7\t\2\2jk\5\26\f\2kl\7\n\2"+
 		"\2l\u00a7\3\2\2\2mn\7\13\2\2no\5\26\f\2op\7\n\2\2p\u00a7\3\2\2\2qr\7\f"+
-		"\2\2rs\5\26\f\2st\7\n\2\2t\u00a7\3\2\2\2uv\7\r\2\2vw\5\26\f\2wx\7\n\2"+
+		"\2\2rs\5\24\13\2st\7\n\2\2t\u00a7\3\2\2\2uv\7\r\2\2vw\5\26\f\2wx\7\n\2"+
 		"\2x\u00a7\3\2\2\2yz\5\26\f\2z{\7\16\2\2{|\5\26\f\2|}\7\n\2\2}\u00a7\3"+
 		"\2\2\2~\177\7\17\2\2\177\u0080\7\3\2\2\u0080\u0081\5\26\f\2\u0081\u0082"+
 		"\7\4\2\2\u0082\u0083\7\5\2\2\u0083\u0084\5\20\t\2\u0084\u0085\7\6\2\2"+
