@@ -1,23 +1,36 @@
-package ast;
-
 /**
- * @author Raúl Izquierdo
+ * @generated VGen (for ANTLR) 1.4.0
  */
+
+package ast;
 
 public class Position {
 
-    public Position(int line, int column) {
-        this.line = line;
-        this.column = column;
-    }
+	public Position(int line, int column) {
+		this.line = line;
+		this.column = column;
+	}
+	
+	public int getLine() {
+		return line;
+	}
 
-    public int getLine() {
-        return line;
-    }
+	public int getColumn() {
+		return column;
+	}
+	
+	public boolean lessThan(Position other) {
+		return line < other.getLine() || (line == other.getLine() && column < other.getColumn());
+	}
+	
+	public boolean greaterThan(Position other) {
+		return line > other.getLine() || (line == other.getLine() && column > other.getColumn());
+	}
 
-    public int getColumn() {
-        return column;
-    }
+	@Override
+	public String toString() {
+		return line + ":" + column;
+	}
 
-    private int line, column;
+	private int line, column;
 }

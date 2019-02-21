@@ -6,7 +6,7 @@ programa -> definicion*;
 
 defVariable:definicion -> nombre:string tipo ambito:string;
 defStruct:definicion -> nombre:string campo*;
-defFuncion:definicion -> nombre:string parametros* tipo defVariable* sentencias*;
+defFuncion:definicion -> nombre:string parametro* tipo defVariable* sentencia*;
 
 intType:tipo ->;
 floatType:tipo ->;
@@ -21,8 +21,8 @@ parametro -> nombre:string tipo;
 print:sentencia -> imprime:expr tipoPrint:string;
 read:sentencia -> leer:expr;
 asignacion:sentencia -> left:expr right:expr;
-if:sentencia -> condicion:expr then:sentencia* else:sentencia*;
-while:sentencia -> condicion:expr sentencia*
+if:sentencia -> condicion:expr verdadero:sentencia* falso:sentencia*;
+while:sentencia -> condicion:expr sentencia*;
 llamadaFuncion:sentencia -> nombre:string parametrosOpt:expr*;
 return:sentencia -> retorno:expr;
 
@@ -31,7 +31,7 @@ realConstant:expr -> valor:string;
 charConstant:expr -> valor:string;
 identConstant:expr -> valor:string;
 cast:expr -> tipo valor:expr;
-exprAritmetica:expr-> left:expresion operador:string right:expresion;
+exprAritmetica:expr-> left:expr operador:string right:expr;
 exprLogica:expr -> left:expr operador:string right:expr;
 not:expr -> valor:expr;
 array:expr-> nombre:expr valor:expr;

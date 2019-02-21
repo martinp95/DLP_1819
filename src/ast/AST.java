@@ -1,14 +1,19 @@
+/**
+ * @generated VGen (for ANTLR) 1.4.0
+ */
+
 package ast;
 
 import visitor.*;
 
-/*
- *  Esta clase se completará en la fase de Análisis Sintáctico
- */
 public interface AST {
+
+    public Object accept(Visitor visitor, Object param);
+
     Position getStart();
 
     Position getEnd();
 
-    public Object accept(Visitor visitor, Object param);
+    public void setPositions(Object... children);
+
 }
