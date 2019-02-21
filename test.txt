@@ -1,0 +1,5 @@
+struct Direccion {
+	portal:int;
+	portalf:float;
+	portalf1:float;
+};

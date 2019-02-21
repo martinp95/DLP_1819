@@ -7,7 +7,7 @@ import Lexicon
 }	
 
 start returns[Programa ast]
-	: definiciones EOF ;
+	: defStruct EOF { $ast = new Programa($defStruct.ast);} ;
 
 definiciones: 
 			| definiciones definicion;
@@ -67,10 +67,11 @@ expr: INT_CONSTANT
 	| expr '.' IDENT
 	| IDENT '(' parametrosOpt ')';
 
-defStruct: 'struct' IDENT '{' campos '}' ';';
+defStruct returns[DefStruct ast]
+		: 'struct' IDENT '{' campos '}' ';'{ $ast = new DefStruct($IDENT,$campos.lista);};
 
-campos: 
-		| campos campo;
+campos returns[List<Campo> lista = new ArrayList<Campo>()]: 
+		| campos campo {$lista.add($campo.ast);};
 		
 campo returns[Campo ast]
 : IDENT ':' tipo ';' { $ast = new Campo($IDENT, $tipo.ast);} ;
