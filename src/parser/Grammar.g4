@@ -2,8 +2,12 @@ grammar Grammar
 	;
 import Lexicon
 	;
+@parser::header {
+    import ast.*;
+}	
 
-start: definiciones EOF;
+start returns[Programa ast]
+	: definiciones EOF ;
 
 definiciones: 
 			| definiciones definicion;
@@ -16,10 +20,12 @@ defFuncion: IDENT '(' parametros ')' '{' variables sentencias '}'
 			|IDENT '(' parametros ')' ':' tipo '{' variables sentencias '}';
 
 parametros:
-			|parametro
-			|parametros ',' parametro;
+			| parametro;
 			
-parametro: IDENT ':' tipo;
+parametro: param
+		 | parametro ',' param;
+			
+param: IDENT ':' tipo;
 				
 variables:
 			|variables defVariable;
@@ -40,8 +46,10 @@ sentencia: 'print' expr ';'
 	| 'return' ';';
 
 parametrosOpt:
-			|expr
-			| parametrosOpt ',' expr;
+			| parametroOpt;
+
+parametroOpt:expr
+			 | parametroOpt ',' expr;
 
 expr: INT_CONSTANT
 	| REAL_CONSTANT
@@ -61,15 +69,18 @@ expr: INT_CONSTANT
 
 defStruct: 'struct' IDENT '{' campos '}' ';';
 
-campos: campo
+campos: 
 		| campos campo;
 		
-campo: IDENT ':' tipo ';' ;
+campo returns[Campo ast]
+: IDENT ':' tipo ';' { $ast = new Campo($IDENT, $tipo.ast);} ;
 
-defVariable: 'var' IDENT ':' tipo ';' ;
+defVariable returns[DefVariable ast]
+	: 'var' IDENT ':' tipo ';' {$ast = new DefVariable($IDENT, $tipo.ast, "");};
 
-tipo: 'int'
-	| 'float'
-	| 'char'
-	| IDENT
-	|'[' INT_CONSTANT ']' tipo;
+tipo returns[Tipo ast]
+	: 'int' { $ast = new IntType();}
+	| 'float' { $ast = new FloatType();}
+	| 'char' { $ast = new CharType();}
+	| IDENT { $ast = new IdentType();}
+	|'[' INT_CONSTANT ']' tipo { $ast = new ArrayType($INT_CONSTANT,$tipo.ast);};

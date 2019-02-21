@@ -1,15 +1,15 @@
 /*
-NOTA. Este ejemplo solo pretende mostrar la sintaxis del lenguaje mediante fragmentos de código inconexos. 
-No está pensado para ser ejecutado ya que realiza ninguna tarea concreta.
+NOTA. Este ejemplo solo pretende mostrar la sintaxis del lenguaje mediante fragmentos de cï¿½digo inconexos. 
+No estï¿½ pensado para ser ejecutado ya que realiza ninguna tarea concreta.
 
 Aclaraciones:
 - La sintaxis tiene que ser obligatoriamente la que se muestra en este ejemplo
 - Las declaraciones de funciones y variables globales pueden venir en cualquier orden.
-- Si la función no tiene valor de retorno no se pone nada entre los paréntesis de los parámetros y las llaves de las sentencias
-- Las funciones deben tener paréntesis aunque no tengan parámetros
-- Una función podrá declarar variables locales solo al inicio de su cuerpo. Por tanto no podrá haber declaración de variables locales en cualquier lugar de la función ni dentro de bloques anidados (por ejemplo el creado por un while)
+- Si la funciï¿½n no tiene valor de retorno no se pone nada entre los parï¿½ntesis de los parï¿½metros y las llaves de las sentencias
+- Las funciones deben tener parï¿½ntesis aunque no tengan parï¿½metros
+- Una funciï¿½n podrï¿½ declarar variables locales solo al inicio de su cuerpo. Por tanto no podrï¿½ haber declaraciï¿½n de variables locales en cualquier lugar de la funciï¿½n ni dentro de bloques anidados (por ejemplo el creado por un while)
 - No pueden aparecer expresiones como sentencias
-- Las llaves son obligatorias en el if/while aunque solo haya una sentencia dentro. También son obligatorios los paréntesis alrededor de la condición
+- Las llaves son obligatorias en el if/while aunque solo haya una sentencia dentro. Tambiï¿½n son obligatorios los parï¿½ntesis alrededor de la condiciï¿½n
 */
 
 //// ------------------------------
@@ -21,7 +21,7 @@ var b:char;
 
 // Arrays ---------
 var c:[5] float;
-var h:[3][2] float;  // Pueden ser más de 2 dimensiones
+var h:[3][2] float;  // Pueden ser mï¿½s de 2 dimensiones
 
 // Structs ------------- 
 struct Direccion {
@@ -37,7 +37,7 @@ struct Persona {
 	direccion:Direccion;
 };
 
-// Combinación de Arrays y Structs -------------
+// Combinaciï¿½n de Arrays y Structs -------------
 var f:[6] Persona;
 
 struct Empresa {
