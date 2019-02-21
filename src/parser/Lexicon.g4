@@ -8,7 +8,7 @@ INT_CONSTANT
 REAL_CONSTANT
 	: [0-9]+'.'[0-9]+;
 	
-CHAR
+CHAR_CONSTANT
 	: '\''.'\''|'\\n';
 
 LINE_COMMENT

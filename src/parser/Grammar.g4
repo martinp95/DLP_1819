@@ -3,9 +3,9 @@ grammar Grammar
 import Lexicon
 	;
 
-start: definiciones;
+start: definiciones EOF;
 
-definiciones: definicion
+definiciones: 
 			| definiciones definicion;
 			
 definicion: defVariable
@@ -29,7 +29,7 @@ sentencias:
 			
 sentencia: 'print' expr ';'														
 	| 'printsp' expr ';'															
-	| 'println' parametrosOpt ';'														
+	| 'println' expr? ';'														
 	| 'read' expr ';'															
 	| expr '=' expr ';'															
 	| 'if' '(' expr ')' '{' sentencias '}'										
@@ -46,7 +46,7 @@ parametrosOpt:
 expr: INT_CONSTANT
 	| REAL_CONSTANT
 	| IDENT
-	| CHAR
+	| CHAR_CONSTANT
 	| '(' expr ')'
 	| 'cast' '<' tipo '>' '(' expr ')'
 	| expr ('*' | '/') expr
