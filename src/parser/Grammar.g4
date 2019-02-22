@@ -7,74 +7,88 @@ import Lexicon
 }	
 
 start returns[Programa ast]
-	: defStruct EOF { $ast = new Programa($defStruct.ast);} ;
+	: definiciones EOF { $ast = new Programa($definiciones.lista);};
 
-definiciones: 
-			| definiciones definicion;
+definiciones returns[List<Definicion> lista = new ArrayList<Definicion>()]
+			: 
+			| definiciones definicion {$lista.add($definicion.ast);};
 			
-definicion: defVariable
-			| defStruct
-			| defFuncion;
+definicion returns[Definicion ast]
+			: defVariable { $defVariable.ast.setAmbito("global");$ast = $defVariable.ast;}
+			| defStruct  { $ast = $defStruct.ast;}
+			| defFuncion { $ast = $defFuncion.ast;};
 
-defFuncion: IDENT '(' parametros ')' '{' variables sentencias '}'
-			|IDENT '(' parametros ')' ':' tipo '{' variables sentencias '}';
+defFuncion returns [DefFuncion ast]
+			: IDENT '(' parametros ')' '{' variables sentencias '}' { $ast = new DefFuncion($IDENT, $parametros.lista, null, $variables.lista, $sentencias.lista);}
+			|IDENT '(' parametros ')' ':' tipo '{' variables sentencias '}' { $ast = new DefFuncion($IDENT, $parametros.lista, $tipo.ast, $variables.lista, $sentencias.lista);};
 
-parametros:
-			| parametro;
+parametros returns[List<Parametro> lista]
+			:
+			| parametro {$lista= $parametro.list;};
 			
-parametro: param
-		 | parametro ',' param;
+parametro returns[List<Parametro> list = new ArrayList<Parametro>()]
+		 : param {$list.add($param.ast);}
+		 | parametro ',' param {$list.add($param.ast);};
 			
-param: IDENT ':' tipo;
+param returns[Parametro ast]
+	: IDENT ':' tipo {$ast = new Parametro($IDENT, $tipo.ast);};
 				
-variables:
-			|variables defVariable;
+variables returns[List<DefVariable> lista = new ArrayList<DefVariable>()]
+			:
+			|variables defVariable { $defVariable.ast.setAmbito("local");$lista.add($defVariable.ast);};
 			
-sentencias: 
-			| sentencias sentencia;
+sentencias returns[List<Sentencia> lista = new ArrayList<Sentencia>()]
+			: 
+			| sentencias sentencia { $lista.add($sentencia.ast);};
 			
-sentencia: 'print' expr ';'														
-	| 'printsp' expr ';'															
-	| 'println' expr? ';'														
-	| 'read' expr ';'															
-	| expr '=' expr ';'															
-	| 'if' '(' expr ')' '{' sentencias '}'										
-	| 'if' '(' expr ')' '{' sentencias '}' 'else' '{' sentencias '}' 			
-	| 'while' '(' expr ')' '{' sentencias '}'									
-	| IDENT '(' parametrosOpt ')' ';'										
-	| 'return' expr ';'
-	| 'return' ';';
+sentencia returns[Sentencia ast]
+	: 'print' expr ';' { $ast = new Print($expr.ast, "");}													
+	| 'printsp' expr ';' { $ast = new Print($expr.ast, "sp");}											
+	| 'println' expr? ';' { $ast = new Print($expr.ast, "ln");}								
+	| 'read' expr ';' { $ast = new Read($expr.ast);}														
+	| expr '=' expr ';' { $ast = new Asignacion($ctx.expr(0), $ctx.expr(1));}												
+	| 'if' '(' expr ')' '{' sentencias '}'	{ $ast = new If($expr.ast, $sentencias.lista, null);}						
+	| 'if' '(' expr ')' '{' sentencias '}' 'else' '{' sentencias '}' { $ast = new If($expr.ast, $ctx.sentencias(0).lista, $ctx.sentencias(1).lista);}	
+	| 'while' '(' expr ')' '{' sentencias '}' {$ast = new While($expr.ast, $sentencias.lista);}									
+	| IDENT '(' parametrosOpt ')' ';' { $ast = new LlamadaFuncion($IDENT, $parametrosOpt.lista);}										
+	| 'return' expr ';' { $ast = new Return($expr.ast);}
+	| 'return' ';' { $ast = new Return(null);};
 
-parametrosOpt:
-			| parametroOpt;
+parametrosOpt returns[List<Expr> lista]
+			:
+			| parametroOpt {$lista= $parametroOpt.list;};
 
-parametroOpt:expr
-			 | parametroOpt ',' expr;
+parametroOpt returns[List<Expr> list = new ArrayList<Expr>()]
+			 :expr {$list.add($expr.ast);}
+			 | parametroOpt ',' expr {$list.add($expr.ast);};
 
-expr: INT_CONSTANT
-	| REAL_CONSTANT
-	| IDENT
-	| CHAR_CONSTANT
-	| '(' expr ')'
-	| 'cast' '<' tipo '>' '(' expr ')'
-	| expr ('*' | '/') expr
-	| expr ('+' | '-') expr
-	| expr ('<' | '>' | '<=' | '>=' | '==' | '!=') expr
-	| '!' expr
-	| expr '&&' expr
-	| expr '||' expr
-	| expr '[' expr ']'
-	| expr '.' IDENT
-	| IDENT '(' parametrosOpt ')';
+expr returns[Expr ast]
+	: INT_CONSTANT { $ast = new IntConstant($INT_CONSTANT);}
+	| REAL_CONSTANT { $ast = new RealConstant($REAL_CONSTANT);}
+	| IDENT { $ast = new IdentConstant($IDENT);}
+	| CHAR_CONSTANT { $ast = new CharConstant($CHAR_CONSTANT);}
+	| '(' expr ')' { $ast = $expr.ast;}
+	| 'cast' '<' tipo '>' '(' expr ')' { $ast = new Cast($tipo.ast, $expr.ast);}
+	|'!' expr { $ast = new Not($expr.ast);}
+	| expr op=('*' | '/') expr { $ast = new ExprAritmetica($ctx.expr(0), $op, $ctx.expr(1));}
+	| expr op=('+' | '-') expr { $ast = new ExprAritmetica($ctx.expr(0), $op, $ctx.expr(1));}
+	| expr op=('<' | '>' | '<=' | '>=') expr { $ast = new ExprLogica($ctx.expr(0), $op, $ctx.expr(1));}
+	| expr op=('!=' | '==') expr { $ast = new ExprLogica($ctx.expr(0), $op, $ctx.expr(1));}
+	| expr '&&' expr { $ast = new ExprLogica($ctx.expr(0), "&&", $ctx.expr(1));}
+	| expr '||' expr { $ast = new ExprLogica($ctx.expr(0), "||", $ctx.expr(1));}
+	| expr '[' expr ']' { $ast = new Array($ctx.expr(0), $ctx.expr(1));}
+	| expr '.' IDENT { $ast = new AccesoStruct($ctx.expr(0), $IDENT);}
+	| IDENT '(' parametrosOpt ')' { $ast = new LlamFuncExp($IDENT, $parametrosOpt.lista);};
 
 defStruct returns[DefStruct ast]
 		: 'struct' IDENT '{' campos '}' ';'{ $ast = new DefStruct($IDENT,$campos.lista);};
 
-campos returns[List<Campo> lista = new ArrayList<Campo>()]: 
+campos returns[List<Campo> lista = new ArrayList<Campo>()]
+		: 
 		| campos campo {$lista.add($campo.ast);};
 		
 campo returns[Campo ast]
-: IDENT ':' tipo ';' { $ast = new Campo($IDENT, $tipo.ast);} ;
+	: IDENT ':' tipo ';' { $ast = new Campo($IDENT, $tipo.ast);} ;
 
 defVariable returns[DefVariable ast]
 	: 'var' IDENT ':' tipo ';' {$ast = new DefVariable($IDENT, $tipo.ast, "");};
