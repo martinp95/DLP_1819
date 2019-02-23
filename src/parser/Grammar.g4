@@ -74,8 +74,7 @@ defStruct returns[DefStruct ast]
 		: 'struct' IDENT '{' campos '}' ';'{ $ast = new DefStruct($IDENT,$campos.lista);};
 
 campos returns[List<Campo> lista = new ArrayList<Campo>()]
-		:
-		| campos campo {$lista.add($campo.ast);};
+		:(campo {$lista.add($campo.ast);})*;
 		
 campo returns[Campo ast]
 	: IDENT ':' tipo ';' { $ast = new Campo($IDENT, $tipo.ast);} ;
