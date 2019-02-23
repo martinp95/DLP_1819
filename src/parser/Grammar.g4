@@ -10,8 +10,7 @@ start returns[Programa ast]
 	: definiciones EOF { $ast = new Programa($definiciones.lista);};
 
 definiciones returns[List<Definicion> lista = new ArrayList<Definicion>()]
-			: 
-			| definiciones definicion {$lista.add($definicion.ast);};
+			: (definicion {$lista.add($definicion.ast);})*;
 			
 definicion returns[Definicion ast]
 			: defVariable { $defVariable.ast.setAmbito("global");$ast = $defVariable.ast;}
@@ -22,24 +21,17 @@ defFuncion returns [DefFuncion ast]
 			: IDENT '(' parametros ')' '{' variables sentencias '}' { $ast = new DefFuncion($IDENT, $parametros.lista, null, $variables.lista, $sentencias.lista);}
 			|IDENT '(' parametros ')' ':' tipo '{' variables sentencias '}' { $ast = new DefFuncion($IDENT, $parametros.lista, $tipo.ast, $variables.lista, $sentencias.lista);};
 
-parametros returns[List<Parametro> lista]
-			:
-			| parametro {$lista= $parametro.list;};
+parametros returns[List<Parametro> lista = new ArrayList<Parametro>()]
+	:(parametro{$lista.add($parametro.ast);}(','parametro{$lista.add($parametro.ast);})*)?;
 			
-parametro returns[List<Parametro> list = new ArrayList<Parametro>()]
-		 : param {$list.add($param.ast);}
-		 | parametro ',' param {$list.add($param.ast);};
-			
-param returns[Parametro ast]
+parametro returns[Parametro ast]
 	: IDENT ':' tipo {$ast = new Parametro($IDENT, $tipo.ast);};
 				
 variables returns[List<DefVariable> lista = new ArrayList<DefVariable>()]
-			:
-			|variables defVariable { $defVariable.ast.setAmbito("local");$lista.add($defVariable.ast);};
+			:(defVariable { $defVariable.ast.setAmbito("local");$lista.add($defVariable.ast);})*;
 			
 sentencias returns[List<Sentencia> lista = new ArrayList<Sentencia>()]
-			: 
-			| sentencias sentencia { $lista.add($sentencia.ast);};
+			: (sentencia { $lista.add($sentencia.ast);})*;
 			
 sentencia returns[Sentencia ast]
 	: 'print' expr ';' { $ast = new Print($expr.ast, "");}													
@@ -54,13 +46,11 @@ sentencia returns[Sentencia ast]
 	| 'return' expr ';' { $ast = new Return($expr.ast);}
 	| 'return' ';' { $ast = new Return(null);};
 
-parametrosOpt returns[List<Expr> lista]
-			:
-			| parametroOpt {$lista= $parametroOpt.list;};
+parametrosOpt returns[List<Expr> lista = new ArrayList<Expr>()]
+	:(parametroOpt{$lista.add($parametroOpt.ast);}(','parametroOpt{$lista.add($parametroOpt.ast);})*)?;
 
-parametroOpt returns[List<Expr> list = new ArrayList<Expr>()]
-			 :expr {$list.add($expr.ast);}
-			 | parametroOpt ',' expr {$list.add($expr.ast);};
+parametroOpt returns[Expr ast]
+			 :expr {$ast = $expr.ast;};
 
 expr returns[Expr ast]
 	: INT_CONSTANT { $ast = new IntConstant($INT_CONSTANT);}
@@ -84,7 +74,7 @@ defStruct returns[DefStruct ast]
 		: 'struct' IDENT '{' campos '}' ';'{ $ast = new DefStruct($IDENT,$campos.lista);};
 
 campos returns[List<Campo> lista = new ArrayList<Campo>()]
-		: 
+		:
 		| campos campo {$lista.add($campo.ast);};
 		
 campo returns[Campo ast]
