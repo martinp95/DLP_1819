@@ -86,5 +86,5 @@ tipo returns[Tipo ast]
 	: 'int' { $ast = new IntType();}
 	| 'float' { $ast = new FloatType();}
 	| 'char' { $ast = new CharType();}
-	| IDENT { $ast = new IdentType();}
+	| IDENT { $ast = new IdentType($IDENT);}
 	|'[' INT_CONSTANT ']' tipo { $ast = new ArrayType($INT_CONSTANT,$tipo.ast);};

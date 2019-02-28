@@ -58,7 +58,7 @@ public class DefaultVisitor implements Visitor {
 		return null;
 	}
 
-	//	class IdentType {  }
+	//	class IdentType { String nombre; }
 	public Object visit(IdentType node, Object param) {
 		return null;
 	}

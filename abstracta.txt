@@ -11,7 +11,7 @@ defFuncion:definicion -> nombre:string parametro* tipo defVariable* sentencia*;
 intType:tipo ->;
 floatType:tipo ->;
 charType:tipo ->;
-identType:tipo ->;
+identType:tipo -> nombre:string;
 arrayType:tipo -> posicion:string tipo:tipo;
 
 campo -> nombre:string tipo;
