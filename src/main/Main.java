@@ -61,10 +61,6 @@ public class Main {
 
 		if (ast == null) // Hay errores o el AST no se ha implementado aún
 			return null;
-		
-		//Borrar para la semana siguiente.
-		PrintVisitor pv = new PrintVisitor();
-        pv.visit(parser.start().ast, null);
 
 		// 2. Fase de Análisis Semántico
 		SemanticAnalisys analyzer = new SemanticAnalisys(errorManager);
