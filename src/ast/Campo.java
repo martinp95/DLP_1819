@@ -4,9 +4,10 @@
 
 package ast;
 
-import visitor.*;
+import org.antlr.v4.runtime.ParserRuleContext;
+import org.antlr.v4.runtime.Token;
 
-import org.antlr.v4.runtime.*;
+import visitor.Visitor;
 
 //	campo -> nombre:String  tipo:tipo
 
@@ -51,8 +52,18 @@ public class Campo extends AbstractAST  {
 
 	private String nombre;
 	private Tipo tipo;
+	private DefStruct definicion;
 
 	public String toString() {
        return "{nombre:" + getNombre() + ", tipo:" + getTipo() + "}";
    }
+
+	public void setDefinicion(DefStruct node) {
+		// TODO Auto-generated method stub
+		this.definicion = node;
+	}
+	
+	public DefStruct getDefinicion() {
+		return definicion;
+	}
 }

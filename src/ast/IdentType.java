@@ -4,9 +4,9 @@
 
 package ast;
 
-import visitor.*;
+import org.antlr.v4.runtime.Token;
 
-import org.antlr.v4.runtime.*;
+import visitor.Visitor;
 
 //	identType:tipo -> nombre:String
 
@@ -37,8 +37,17 @@ public class IdentType extends AbstractTipo {
 	}
 
 	private String nombre;
+	private DefStruct definicion;
+
+	public DefStruct getDefinicion() {
+		return definicion;
+	}
 
 	public String toString() {
        return "{nombre:" + getNombre() + "}";
    }
+
+	public void setDefinicion(DefStruct defStruct) {
+		this.definicion = defStruct;		
+	}
 }
