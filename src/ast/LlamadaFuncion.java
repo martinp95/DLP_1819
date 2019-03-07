@@ -49,12 +49,21 @@ public class LlamadaFuncion extends AbstractSentencia {
 	@Override
 	public Object accept(Visitor v, Object param) { 
 		return v.visit(this, param);
+	}	
+
+	public DefFuncion getDefinicion() {
+		return definicion;
 	}
 
-	private String nombre;
-	private List<Expr> parametrosOpt;
+	public void setDefinicion(DefFuncion definicion) {
+		this.definicion = definicion;
+	}
 
 	public String toString() {
        return "{nombre:" + getNombre() + ", parametrosOpt:" + getParametrosOpt() + "}";
    }
+	
+	private String nombre;
+	private List<Expr> parametrosOpt;
+	private DefFuncion definicion;
 }

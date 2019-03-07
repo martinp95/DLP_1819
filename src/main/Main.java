@@ -25,7 +25,7 @@ import codegeneration.*;
  *
  */
 public class Main {
-	public static final String program = "ejemplo.txt"; // Prueba a compilar durante el desarrollo
+	public static final String program = "1. Funciones.txt"; // Prueba a compilar durante el desarrollo
 
 	public static void main(String[] args) throws Exception {
 		ErrorManager errorManager = new ErrorManager();
@@ -53,11 +53,11 @@ public class Main {
 
 		// IMPORTANTE: Cuando se genere el AST, INTERCAMBIAR las dos líneas siguientes:
 		// parser.start();
-		//ast = parser.start().ast;
-		
-		//Comentar para que salga el html, descomentar linea anterior
-		PrintVisitor pv = new PrintVisitor();
-		pv.visit(parser.start().ast, null);
+		ast = parser.start().ast;
+
+		// Comentar para que salga el html, descomentar linea anterior
+//		PrintVisitor pv = new PrintVisitor();
+//		pv.visit(parser.start().ast, null);
 
 		if (ast == null) // Hay errores o el AST no se ha implementado aún
 			return null;

@@ -51,8 +51,17 @@ public class LlamFuncExp extends AbstractExpr {
 		return v.visit(this, param);
 	}
 
+	public DefFuncion getDefinicion() {
+		return definicion;
+	}
+
+	public void setDefinicion(DefFuncion definicion) {
+		this.definicion = definicion;
+	}
+
 	private String nombre;
 	private List<Expr> parametrosOpt;
+	private DefFuncion definicion;
 
 	public String toString() {
        return "{nombre:" + getNombre() + ", parametrosOpt:" + getParametrosOpt() + "}";
