@@ -61,8 +61,17 @@ public class DefVariable extends AbstractDefinicion {
 	private String nombre;
 	private Tipo tipo;
 	private String ambito;
+	private Parametro parametro;
+
+	public Parametro getParametro() {
+		return parametro;
+	}
 
 	public String toString() {
        return "{nombre:" + getNombre() + ", tipo:" + getTipo() + ", ambito:" + getAmbito() + "}";
    }
+
+	public void setParametro(Parametro node) {
+		this.parametro = node;
+	}
 }

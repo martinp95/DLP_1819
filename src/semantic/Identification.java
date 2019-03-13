@@ -21,6 +21,7 @@ public class Identification extends DefaultVisitor {
 	// class DefFuncion { String nombre; List<Parametro> parametro; Tipo tipo;
 	// List<DefVariable> defvariable; List<Sentencia> sentencia; }
 	public Object visit(DefFuncion node, Object param) {
+		variables.set();
 		predicado(funciones.get(node.getNombre()) == null, "Funcion ya definida: " + node.getNombre(), node);
 		funciones.put(node.getNombre(), node);
 		visitChildren(node.getParametro(), param);
@@ -28,6 +29,7 @@ public class Identification extends DefaultVisitor {
 			node.getTipo().accept(this, param);
 		visitChildren(node.getDefvariable(), param);
 		visitChildren(node.getSentencia(), param);
+		variables.reset();
 		return null;
 	}
 
@@ -51,7 +53,7 @@ public class Identification extends DefaultVisitor {
 	public Object visit(DefStruct node, Object param) {
 		predicado(structs.get(node.getNombre()) == null, "Estructura repetida definido: " + node.getNombre(), node);
 		structs.put(node.getNombre(), node);
-		for(Campo campo: node.getCampo()) {
+		for (Campo campo : node.getCampo()) {
 			campo.setDefinicion(node);
 			campos.put(campo.getNombre(), campo);
 		}
@@ -62,7 +64,7 @@ public class Identification extends DefaultVisitor {
 	// class Campo { String nombre; Tipo tipo; }
 	public Object visit(Campo node, Object param) {
 		campos.remove(node.getNombre(), node);
-		predicado(campos.get(node.getNombre())== null, "Campo repetido: " + node.getNombre(), node);
+		predicado(campos.get(node.getNombre()) == null, "Campo repetido: " + node.getNombre(), node);
 		if (node.getTipo() != null)
 			node.getTipo().accept(this, param);
 		return null;
@@ -70,8 +72,41 @@ public class Identification extends DefaultVisitor {
 
 	// class IdentType { String nombre; }
 	public Object visit(IdentType node, Object param) {
-		predicado(structs.get(node.getNombre())!=null, "Estructura no definida: " + node.getNombre(), node);
+		predicado(structs.get(node.getNombre()) != null, "Estructura no definida: " + node.getNombre(), node);
 		node.setDefinicion(structs.get(node.getNombre()));
+		return null;
+	}
+
+	// class DefVariable { String nombre; Tipo tipo; String ambito; }
+	public Object visit(DefVariable node, Object param) {
+		predicado(variables.getFromTop(node.getNombre()) == null, "Variable ya definida: " + node.getNombre(), node);
+		variables.put(node.getNombre(), node);
+		if (node.getTipo() != null)
+			node.getTipo().accept(this, param);
+
+		return null;
+	}
+
+	// class Parametro { String nombre; Tipo tipo; }
+	public Object visit(Parametro node, Object param) {
+		DefVariable variable = new DefVariable(node.getNombre(), node.getTipo(), "param");
+		variable.setParametro(node);
+		predicado(variables.getFromTop(variable.getNombre()) == null, "parametro repetido: " + variable.getNombre(),
+				node);
+		variables.put(variable.getNombre(), variable);
+		if (node.getTipo() != null)
+			node.getTipo().accept(this, param);
+
+		return null;
+	}
+
+	// class IdentConstant { String valor; }
+	public Object visit(IdentConstant node, Object param) {
+		predicado(variables.getFromAny(node.getValor()) != null, "Variable no definida: " + node.getValor(), node);
+		if (variables.getFromTop(node.getValor()) == null)
+			node.setDefinicion(variables.getFromTop(node.getValor()));
+		else
+			node.setDefinicion(variables.getFromAny(node.getValor()));
 		return null;
 	}
 
@@ -113,4 +148,5 @@ public class Identification extends DefaultVisitor {
 	private Map<String, DefFuncion> funciones = new HashMap<String, DefFuncion>();
 	private Map<String, DefStruct> structs = new HashMap<String, DefStruct>();
 	private Map<String, Campo> campos = new HashMap<String, Campo>();
+	private ContextMap<String, DefVariable> variables = new ContextMap<String, DefVariable>();
 }
