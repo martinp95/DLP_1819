@@ -56,8 +56,8 @@ public class Main {
 		ast = parser.start().ast;
 
 		// Comentar para que salga el html, descomentar linea anterior
-//		PrintVisitor pv = new PrintVisitor();
-//		pv.visit(parser.start().ast, null);
+		// PrintVisitor pv = new PrintVisitor();
+		// pv.visit(parser.start().ast, null);
 
 		if (ast == null) // Hay errores o el AST no se ha implementado aún
 			return null;

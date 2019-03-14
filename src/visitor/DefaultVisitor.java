@@ -184,6 +184,15 @@ public class DefaultVisitor implements Visitor {
 		return null;
 	}
 
+	//	class ExprCondicion { Expr left;  String operador;  Expr right; }
+	public Object visit(ExprCondicion node, Object param) {
+		if (node.getLeft() != null)
+			node.getLeft().accept(this, param);
+		if (node.getRight() != null)
+			node.getRight().accept(this, param);
+		return null;
+	}
+
 	//	class Not { Expr valor; }
 	public Object visit(Not node, Object param) {
 		if (node.getValor() != null)

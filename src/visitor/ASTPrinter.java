@@ -352,6 +352,18 @@ public class ASTPrinter extends DefaultVisitor {
 		return null;
 	}
 
+	//	class ExprCondicion { Expr left;  String operador;  Expr right; }
+	public Object visit(ExprCondicion node, Object param) {
+		int indent = ((Integer)param).intValue();
+
+		printName(indent, "ExprCondicion", node, false);
+
+		visit(indent + 1, "left", "Expr",node.getLeft());
+		print(indent + 1, "operador", "String", node.getOperador());
+		visit(indent + 1, "right", "Expr",node.getRight());
+		return null;
+	}
+
 	//	class Not { Expr valor; }
 	public Object visit(Not node, Object param) {
 		int indent = ((Integer)param).intValue();

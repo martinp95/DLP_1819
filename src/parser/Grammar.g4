@@ -62,8 +62,8 @@ expr returns[Expr ast]
 	|'!' expr { $ast = new Not($expr.ast);}
 	| expr op=('*' | '/') expr { $ast = new ExprAritmetica($ctx.expr(0), $op, $ctx.expr(1));}
 	| expr op=('+' | '-') expr { $ast = new ExprAritmetica($ctx.expr(0), $op, $ctx.expr(1));}
-	| expr op=('<' | '>' | '<=' | '>=') expr { $ast = new ExprLogica($ctx.expr(0), $op, $ctx.expr(1));}
-	| expr op=('!=' | '==') expr { $ast = new ExprLogica($ctx.expr(0), $op, $ctx.expr(1));}
+	| expr op=('<' | '>' | '<=' | '>=') expr { $ast = new ExprCondicion($ctx.expr(0), $op, $ctx.expr(1));}
+	| expr op=('!=' | '==') expr { $ast = new ExprCondicion($ctx.expr(0), $op, $ctx.expr(1));}
 	| expr '&&' expr { $ast = new ExprLogica($ctx.expr(0), "&&", $ctx.expr(1));}
 	| expr '||' expr { $ast = new ExprLogica($ctx.expr(0), "||", $ctx.expr(1));}
 	| expr '[' expr ']' { $ast = new Array($ctx.expr(0), $ctx.expr(1));}

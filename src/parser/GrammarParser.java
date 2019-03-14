@@ -1091,7 +1091,7 @@ public class GrammarParser extends Parser {
 						}
 						setState(253);
 						((ExprContext)_localctx).expr = expr(8);
-						 ((ExprContext)_localctx).ast =  new ExprLogica(_localctx.expr(0), ((ExprContext)_localctx).op, _localctx.expr(1));
+						 ((ExprContext)_localctx).ast =  new ExprCondicion(_localctx.expr(0), ((ExprContext)_localctx).op, _localctx.expr(1));
 						}
 						break;
 					case 4:
@@ -1113,7 +1113,7 @@ public class GrammarParser extends Parser {
 						}
 						setState(258);
 						((ExprContext)_localctx).expr = expr(7);
-						 ((ExprContext)_localctx).ast =  new ExprLogica(_localctx.expr(0), ((ExprContext)_localctx).op, _localctx.expr(1));
+						 ((ExprContext)_localctx).ast =  new ExprCondicion(_localctx.expr(0), ((ExprContext)_localctx).op, _localctx.expr(1));
 						}
 						break;
 					case 5:

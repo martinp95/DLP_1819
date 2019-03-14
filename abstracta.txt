@@ -33,6 +33,7 @@ identConstant:expr -> valor:string;
 cast:expr -> tipo valor:expr;
 exprAritmetica:expr-> left:expr operador:string right:expr;
 exprLogica:expr -> left:expr operador:string right:expr;
+exprCondicion:expr -> left:expr operador:string right:expr;
 not:expr -> valor:expr;
 array:expr-> nombre:expr valor:expr;
 accesoStruct:expr -> nombre:expr acceso:string;
