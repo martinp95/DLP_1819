@@ -103,7 +103,7 @@ public class Identification extends DefaultVisitor {
 	// class IdentConstant { String valor; }
 	public Object visit(IdentConstant node, Object param) {
 		predicado(variables.getFromAny(node.getValor()) != null, "Variable no definida: " + node.getValor(), node);
-		if (variables.getFromTop(node.getValor()) == null)
+		if (variables.getFromTop(node.getValor()) != null)
 			node.setDefinicion(variables.getFromTop(node.getValor()));
 		else
 			node.setDefinicion(variables.getFromAny(node.getValor()));
