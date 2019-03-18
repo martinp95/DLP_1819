@@ -21,13 +21,12 @@ public class TypeChecking extends DefaultVisitor {
 		if (node.getParametro() != null) {
 			for (Parametro child : node.getParametro()) {
 				child.accept(this, param);
-				predicado(isSimple(child.getTipo()),
-						"Los parametros deben de ser tipos primitivos: " + child.getNombre(), node);
+				predicado(isSimple(child.getTipo()), "Los parametros deben de ser tipos primitivos", node);
 			}
 		}
 		if (node.getTipo() != null) {
 			node.getTipo().accept(this, param);
-			predicado(isSimple(node.getTipo()), "Retorno de tipo no simple: " + node.getTipo(), node);
+			predicado(isSimple(node.getTipo()), "Retorno de tipo no simple", node);
 		}
 		visitChildren(node.getDefvariable(), param);
 		visitChildren(node.getSentencia(), param);
@@ -83,8 +82,7 @@ public class TypeChecking extends DefaultVisitor {
 		predicado(!isIgualTipo(node.getTipo(), node.getValor().getTipo()), "No se puede hacer cast al mismo tipo",
 				node);
 		predicado(isSimple(node.getTipo()), "No se puede hacer cast a tipos complejos", node.getStart());
-		predicado(isSimple(node.getValor().getTipo()), "No se puede hacer cast de tipos complejos",
-				node.getStart());
+		predicado(isSimple(node.getValor().getTipo()), "No se puede hacer cast de tipos complejos", node.getStart());
 
 		return null;
 	}
@@ -286,9 +284,7 @@ public class TypeChecking extends DefaultVisitor {
 
 	// class AccesoStruct { Expr nombre; String acceso; }
 	public Object visit(AccesoStruct node, Object param) {
-
 		super.visit(node, param);
-
 		predicado(node.getNombre().getTipo() instanceof IdentType, "Se requiere tipo Struct", node);
 		node.setModificable(true);
 
@@ -327,7 +323,6 @@ public class TypeChecking extends DefaultVisitor {
 		}
 		node.setTipo(node.getDefinicion().getTipo());
 		node.setModificable(false);
-
 		return null;
 	}
 

@@ -60,13 +60,13 @@ expr returns[Expr ast]
 	| '(' expr ')' { $ast = $expr.ast;}
 	| 'cast' '<' tipo '>' '(' expr ')' { $ast = new Cast($tipo.ast, $expr.ast);}
 	|'!' expr { $ast = new Not($expr.ast);}
+	| expr '[' expr ']' { $ast = new Array($ctx.expr(0), $ctx.expr(1));}
 	| expr op=('*' | '/') expr { $ast = new ExprAritmetica($ctx.expr(0), $op, $ctx.expr(1));}
 	| expr op=('+' | '-') expr { $ast = new ExprAritmetica($ctx.expr(0), $op, $ctx.expr(1));}
 	| expr op=('<' | '>' | '<=' | '>=') expr { $ast = new ExprCondicion($ctx.expr(0), $op, $ctx.expr(1));}
 	| expr op=('!=' | '==') expr { $ast = new ExprCondicion($ctx.expr(0), $op, $ctx.expr(1));}
 	| expr '&&' expr { $ast = new ExprLogica($ctx.expr(0), "&&", $ctx.expr(1));}
 	| expr '||' expr { $ast = new ExprLogica($ctx.expr(0), "||", $ctx.expr(1));}
-	| expr '[' expr ']' { $ast = new Array($ctx.expr(0), $ctx.expr(1));}
 	| expr '.' IDENT { $ast = new AccesoStruct($ctx.expr(0), $IDENT);}
 	| IDENT '(' parametrosOpt ')' { $ast = new LlamFuncExp($IDENT, $parametrosOpt.lista);};
 
