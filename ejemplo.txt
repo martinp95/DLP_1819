@@ -67,17 +67,15 @@ main() {
   var local: int;
   var pepe: Persona;
   var v:[10] int;
-  var mierda:float;
 
   //pepe.edad = 20;
   read pepe.direccion.codigoPostal; 
 
-  local = 0;  
-  mierda = 0.0;
+  local = 0;
   while (local < 10) {
-  	mierda = h[0][3] + 2.0;
-  	mierda = 2.0 + h[0][3];
     v[local] = dobleSuma(cast<int>(2.0 + h[0][3]), local);
+    local = dobleSuma(2 + pepe.edad, local);
+    local = dobleSuma(pepe.edad + 2, local);
     local = local + 1;
   }
 
