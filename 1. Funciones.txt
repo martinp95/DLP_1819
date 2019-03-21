@@ -1,6 +1,6 @@
 /*
-Este ejemplo tiene varios errores semánticos que el compilador debe detectar en la
-fase de identificación y otros que no deben ser detectados aún.
+Este ejemplo tiene varios errores semï¿½nticos que el compilador debe detectar en la
+fase de identificaciï¿½n y otros que no deben ser detectados aï¿½n.
 
 NOTA: Es posible que el alumno deba adaptar ligeramente la sintaxis del lenguaje si no coincide
 con la del lenguaje que le corresponde.
@@ -15,13 +15,13 @@ prueba() {
 }
 
 main() {
-	print f();	// Función no definida 
+	print f();	// Funciï¿½n no definida 
 	g(2);		// Procedimiento no definido 
 	
 	dobleSuma();
-	dobleSuma(5.6);	// No error en esta fase aunque no coincidan parámetros 
+	dobleSuma(5.6);	// No error en esta fase aunque no coincidan parï¿½metros 
 }
 
-dobleSuma() {	// Función repetida 
+dobleSuma() {	// Funciï¿½n repetida 
 
 }
