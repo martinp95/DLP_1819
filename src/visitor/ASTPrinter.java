@@ -423,6 +423,7 @@ public class ASTPrinter extends DefaultVisitor {
 		write(indent, formatValue(value) + "  " + typeTag(type));
 	}
 
+	@SuppressWarnings("unused")
 	private void print(int indent, String attName, String type, List<? extends Object> children) {
 		write(indent, attName + "  " + typeTag(type) + " = ");
 		if (children != null)
@@ -537,6 +538,7 @@ public class ASTPrinter extends DefaultVisitor {
 				+ "</span><span class=\"sourceText\">" + beforeText + "</span>";
 	}
 
+	@SuppressWarnings("unused")
 	private static List<String> loadLines(String sourceFile, int tabWidth) {
 		if (sourceFile == null)
 			return null;
