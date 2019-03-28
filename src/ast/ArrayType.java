@@ -16,23 +16,24 @@ public class ArrayType extends AbstractTipo {
 		this.posicion = posicion;
 		this.tipo = tipo;
 
-       // Lo siguiente se puede borrar si no se quiere la posicion en el fichero.
-       // Obtiene la linea/columna a partir de las de los hijos.
-       setPositions(tipo);
+		// Lo siguiente se puede borrar si no se quiere la posicion en el fichero.
+		// Obtiene la linea/columna a partir de las de los hijos.
+		setPositions(tipo);
 	}
 
 	public ArrayType(Object posicion, Object tipo) {
-		this.posicion = (posicion instanceof Token) ? ((Token)posicion).getText() : (String) posicion;
+		this.posicion = (posicion instanceof Token) ? ((Token) posicion).getText() : (String) posicion;
 		this.tipo = (Tipo) ((tipo instanceof ParserRuleContext) ? getAST(tipo) : tipo);
 
-       // Lo siguiente se puede borrar si no se quiere la posicion en el fichero.
-       // Obtiene la linea/columna a partir de las de los hijos.
-       setPositions(posicion, tipo);
+		// Lo siguiente se puede borrar si no se quiere la posicion en el fichero.
+		// Obtiene la linea/columna a partir de las de los hijos.
+		setPositions(posicion, tipo);
 	}
 
 	public String getPosicion() {
 		return posicion;
 	}
+
 	public void setPosicion(String posicion) {
 		this.posicion = posicion;
 	}
@@ -40,12 +41,13 @@ public class ArrayType extends AbstractTipo {
 	public Tipo getTipo() {
 		return tipo;
 	}
+
 	public void setTipo(Tipo tipo) {
 		this.tipo = tipo;
 	}
 
 	@Override
-	public Object accept(Visitor v, Object param) { 
+	public Object accept(Visitor v, Object param) {
 		return v.visit(this, param);
 	}
 
@@ -53,6 +55,11 @@ public class ArrayType extends AbstractTipo {
 	private Tipo tipo;
 
 	public String toString() {
-       return "{posicion:" + getPosicion() + ", tipo:" + getTipo() + "}";
-   }
+		return "{posicion:" + getPosicion() + ", tipo:" + getTipo() + "}";
+	}
+
+	@Override
+	public int getMemSize() {
+		return tipo.getMemSize() * Integer.parseInt(posicion);
+	}
 }

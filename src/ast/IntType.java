@@ -13,12 +13,16 @@ import org.antlr.v4.runtime.*;
 public class IntType extends AbstractTipo {
 
 	@Override
-	public Object accept(Visitor v, Object param) { 
+	public Object accept(Visitor v, Object param) {
 		return v.visit(this, param);
 	}
 
-
 	public String toString() {
-       return "{IntType}";
-   }
+		return "{IntType}";
+	}
+
+	@Override
+	public int getMemSize() {
+		return 2;
+	}
 }

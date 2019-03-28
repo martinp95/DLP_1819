@@ -13,12 +13,16 @@ import org.antlr.v4.runtime.*;
 public class FloatType extends AbstractTipo {
 
 	@Override
-	public Object accept(Visitor v, Object param) { 
+	public Object accept(Visitor v, Object param) {
 		return v.visit(this, param);
 	}
 
-
 	public String toString() {
-       return "{FloatType}";
-   }
+		return "{FloatType}";
+	}
+
+	@Override
+	public int getMemSize() {
+		return 4;
+	}
 }

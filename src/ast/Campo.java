@@ -53,6 +53,11 @@ public class Campo extends AbstractAST  {
 	private String nombre;
 	private Tipo tipo;
 	private DefStruct definicion;
+	private int direccion;
+
+	public int getDireccion() {
+		return direccion;
+	}
 
 	public String toString() {
        return "{nombre:" + getNombre() + ", tipo:" + getTipo() + "}";
@@ -65,5 +70,9 @@ public class Campo extends AbstractAST  {
 	
 	public DefStruct getDefinicion() {
 		return definicion;
+	}
+
+	public void setDireccion(int direccion) {
+		this.direccion = direccion;
 	}
 }

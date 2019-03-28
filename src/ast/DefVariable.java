@@ -62,6 +62,11 @@ public class DefVariable extends AbstractDefinicion {
 	private Tipo tipo;
 	private String ambito;
 	private Parametro parametro;
+	private int direccion;
+
+	public int getDireccion() {
+		return direccion;
+	}
 
 	public Parametro getParametro() {
 		return parametro;
@@ -73,5 +78,9 @@ public class DefVariable extends AbstractDefinicion {
 
 	public void setParametro(Parametro node) {
 		this.parametro = node;
+	}
+
+	public void setDireccion(int direccion) {
+		this.direccion = direccion;
 	}
 }

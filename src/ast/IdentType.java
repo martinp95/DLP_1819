@@ -50,4 +50,13 @@ public class IdentType extends AbstractTipo {
 	public void setDefinicion(DefStruct defStruct) {
 		this.definicion = defStruct;		
 	}
+
+	@Override
+	public int getMemSize() {
+		int memSize = 0;
+		for(Campo campo : definicion.getCampo()) {
+			memSize += campo.getTipo().getMemSize();
+		}
+		return memSize;
+	}
 }
