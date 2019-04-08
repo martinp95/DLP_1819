@@ -25,4 +25,10 @@ public class CharType extends AbstractTipo {
 	public int getMemSize() {
 		return 1;
 	}
+
+	@Override
+	public char getSufijo() {
+		// TODO Auto-generated method stub
+		return 'b';
+	}
 }

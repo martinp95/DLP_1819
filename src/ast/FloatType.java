@@ -25,4 +25,10 @@ public class FloatType extends AbstractTipo {
 	public int getMemSize() {
 		return 4;
 	}
+
+	@Override
+	public char getSufijo() {
+		// TODO Auto-generated method stub
+		return 'f';
+	}
 }

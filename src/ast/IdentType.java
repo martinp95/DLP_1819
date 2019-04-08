@@ -59,4 +59,10 @@ public class IdentType extends AbstractTipo {
 		}
 		return memSize;
 	}
+
+	@Override
+	public char getSufijo() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 }

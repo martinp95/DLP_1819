@@ -62,4 +62,10 @@ public class ArrayType extends AbstractTipo {
 	public int getMemSize() {
 		return tipo.getMemSize() * Integer.parseInt(posicion);
 	}
+
+	@Override
+	public char getSufijo() {
+		// TODO Auto-generated method stub
+		return tipo.getSufijo();
+	}
 }

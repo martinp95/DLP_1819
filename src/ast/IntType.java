@@ -25,4 +25,10 @@ public class IntType extends AbstractTipo {
 	public int getMemSize() {
 		return 2;
 	}
+
+	@Override
+	public char getSufijo() {
+		// TODO Auto-generated method stub
+		return 'i';
+	}
 }

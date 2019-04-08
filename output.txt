@@ -1,0 +1,34 @@
+#source "ejemplo.txt"
+call main
+halt
+dobleSuma:
+enter 2
+#line 56
+storei
+escribeEdad:
+enter 0
+ret 0, 0, 2
+#line 61
+outi
+main:
+enter 28
+ret 0, 28, 0
+#line 71
+storei
+#line 72
+ini
+storei
+#line 74
+storei
+#line 76
+storei
+#line 77
+storei
+#line 78
+storei
+#line 79
+storei
+#line 80
+storei
+#line 87
+storeb
