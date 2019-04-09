@@ -104,6 +104,87 @@ public class CodeSelection extends DefaultVisitor {
 	// class If { Expr condicion; List<Sentencia> verdadero; List<Sentencia> falso;
 	// }
 	public Object visit(If node, Object param) {
+		out("#line " + node.getEnd().getLine());
+		int contadorIfs = this.contadorIfs;
+		this.contadorIfs++;
+		node.getCondicion().accept(this, Funcion.VALOR);
+		if (node.getFalso() != null)
+			out("jz else" + contadorIfs);
+		else
+			out("jz finElse" + contadorIfs);
+
+		visitChildren(node.getVerdadero(), param);
+		if (node.getVerdadero() != null) {
+			out("jmp finElse" + contadorIfs);
+			out("else" + contadorIfs + ":");
+			visitChildren(node.getFalso(), param);
+		}
+
+		if (node.getFalso() != null)
+			out("finElse" + contadorIfs + ":");
+		else
+			out("else" + contadorIfs + ":");
+		return null;
+	}
+
+	// class While { Expr condicion; List<Sentencia> sentencia; }
+	public Object visit(While node, Object param) {
+		out("#line " + node.getCondicion().getStart().getLine());
+		int contadorWhile = this.contadorWhile;
+		this.contadorWhile++;
+		out("while" + contadorWhile + ":");
+		node.getCondicion().accept(this, Funcion.VALOR);
+		out("jz finWhile" + contadorWhile);
+		visitChildren(node.getSentencia(), param);
+		out("jmp while" + contadorWhile);
+		out("finWhile" + contadorWhile + ":");
+		return null;
+	}
+
+	// class LlamadaFuncion { String nombre; List<Expr> parametrosOpt; }
+	public Object visit(LlamadaFuncion node, Object param) {
+		if (node.getParametrosOpt() != null)
+			visitChildren(node.getParametrosOpt(), Funcion.VALOR);
+		out("call " + node.getNombre());
+		if (node.getDefinicion().getTipo() != null)
+			out("pop" + node.getDefinicion().getTipo().getSufijo());
+		return null;
+	}
+
+	// class Return { Expr retorno; }
+	public Object visit(Return node, Object param) {
+		int sizeLocales = 0;
+		int sizeParametros = 0;
+
+		for (Parametro child : node.getFuncion().getParametro())
+			sizeParametros += child.getTipo().getMemSize();
+		for (DefVariable child : node.getFuncion().getDefvariable())
+			sizeLocales += child.getTipo().getMemSize();
+
+		if (node.getRetorno() == null)
+			out("ret 0," + sizeLocales + "," + sizeParametros);
+		else {
+			node.getRetorno().accept(this, Funcion.VALOR);
+			out("ret" + node.getRetorno().getTipo().getMemSize() + "," + sizeLocales + "," + sizeParametros);
+		}
+		return null;
+	}
+
+	// class IntConstant { String valor; }
+	public Object visit(IntConstant node, Object param) {
+		out("pushi " + node.getValor());
+		return null;
+	}
+
+	// class RealConstant { String valor; }
+	public Object visit(RealConstant node, Object param) {
+		out("pushf " + node.getValor());
+		return null;
+	}
+
+	// class CharConstant { String valor; }
+	public Object visit(CharConstant node, Object param) {
+		out("pushb " + node.getValor());
 		return null;
 	}
 

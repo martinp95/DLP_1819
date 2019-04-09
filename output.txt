@@ -4,7 +4,9 @@ halt
 dobleSuma:
 enter 2
 #line 56
+pushi 2
 storei
+ret2,2,4
 escribeEdad:
 enter 0
 ret 0, 0, 2
@@ -14,21 +16,53 @@ main:
 enter 28
 ret 0, 28, 0
 #line 71
+pushi 20
 storei
 #line 72
 ini
 storei
 #line 74
+pushi 0
 storei
+#line 75
+while0:
+pushi 10
+jz finWhile0
 #line 76
+pushf 2.0
+pushi 0
+pushi 3
 storei
 #line 77
+pushi 2
 storei
 #line 78
+pushi 2
 storei
 #line 79
+pushi 1
 storei
 #line 80
+pushi 1
 storei
+jmp while0
+finWhile0:
 #line 87
+pushi 2
+pushi 5
+jz else0
+call escribeEdad
+ret 0,28,0
+jmp finElse0
+else0:
+#line 87
+pushb 'R'
 storeb
+finElse0:
+#line 91
+pushi 2
+jz finElse1
+call escribeEdad
+jmp finElse1
+else1:
+else1:
