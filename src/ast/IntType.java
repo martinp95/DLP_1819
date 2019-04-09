@@ -4,9 +4,7 @@
 
 package ast;
 
-import visitor.*;
-
-import org.antlr.v4.runtime.*;
+import visitor.Visitor;
 
 //	intType:tipo -> 
 
@@ -30,5 +28,10 @@ public class IntType extends AbstractTipo {
 	public char getSufijo() {
 		// TODO Auto-generated method stub
 		return 'i';
+	}
+
+	@Override
+	public String getNombreMAPL() {
+		return "int";
 	}
 }

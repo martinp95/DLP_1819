@@ -64,7 +64,6 @@ public class Campo extends AbstractAST  {
    }
 
 	public void setDefinicion(DefStruct node) {
-		// TODO Auto-generated method stub
 		this.definicion = node;
 	}
 	

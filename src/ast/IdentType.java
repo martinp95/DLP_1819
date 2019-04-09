@@ -62,7 +62,11 @@ public class IdentType extends AbstractTipo {
 
 	@Override
 	public char getSufijo() {
-		// TODO Auto-generated method stub
 		return 0;
+	}
+
+	@Override
+	public String getNombreMAPL() {
+		return getNombre();
 	}
 }

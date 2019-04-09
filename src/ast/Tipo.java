@@ -8,4 +8,5 @@ public interface Tipo extends AST {
 	
 	public int getMemSize();
 	public char getSufijo();
+	public String getNombreMAPL();
 }

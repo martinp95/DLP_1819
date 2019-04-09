@@ -65,7 +65,11 @@ public class ArrayType extends AbstractTipo {
 
 	@Override
 	public char getSufijo() {
-		// TODO Auto-generated method stub
 		return tipo.getSufijo();
+	}
+
+	@Override
+	public String getNombreMAPL() {
+		return posicion + "*" + getTipo().getNombreMAPL();
 	}
 }

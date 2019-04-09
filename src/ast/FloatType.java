@@ -4,9 +4,7 @@
 
 package ast;
 
-import visitor.*;
-
-import org.antlr.v4.runtime.*;
+import visitor.Visitor;
 
 //	floatType:tipo -> 
 
@@ -28,7 +26,11 @@ public class FloatType extends AbstractTipo {
 
 	@Override
 	public char getSufijo() {
-		// TODO Auto-generated method stub
 		return 'f';
+	}
+
+	@Override
+	public String getNombreMAPL() {
+		return "float";
 	}
 }

@@ -4,9 +4,7 @@
 
 package ast;
 
-import visitor.*;
-
-import org.antlr.v4.runtime.*;
+import visitor.Visitor;
 
 //	charType:tipo -> 
 
@@ -28,7 +26,11 @@ public class CharType extends AbstractTipo {
 
 	@Override
 	public char getSufijo() {
-		// TODO Auto-generated method stub
 		return 'b';
+	}
+
+	@Override
+	public String getNombreMAPL() {
+		return "byte";
 	}
 }
