@@ -96,9 +96,27 @@ public class CodeSelection extends DefaultVisitor {
 
 	// class Print { Expr imprime; String tipoPrint; }
 	public Object visit(Print node, Object param) {
+
 		out("#line " + node.getEnd().getLine());
-		node.getImprime().accept(this, Funcion.VALOR);
-		out("out" + node.getImprime().getTipo().getSufijo());
+
+		if (node.getTipoPrint().equals("")) {
+			node.getImprime().accept(this, Funcion.VALOR);
+			out("out" + node.getImprime().getTipo().getSufijo());
+		} else if (node.getTipoPrint().equals("ln") && node.getImprime() == null) {
+			out("pushb 10");
+			out("outb");
+		} else if (node.getTipoPrint().equals("ln") && node.getImprime() != null) {
+			node.getImprime().accept(this, Funcion.VALOR);
+			out("out" + node.getImprime().getTipo().getSufijo());
+			out("pushb 10");
+			out("outb");
+		} else if (node.getTipoPrint().equals("sp")) {
+			node.getImprime().accept(this, Funcion.VALOR);
+			out("out" + node.getImprime().getTipo().getSufijo());
+			out("pushb 32");
+			out("outb");
+		}
+
 		return null;
 	}
 
