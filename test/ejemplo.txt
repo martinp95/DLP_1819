@@ -74,9 +74,6 @@ main() {
   local = 0;
   while (local < 10) {
     v[local] = dobleSuma(cast<int>(2.0 + h[0][3]), local);
-    local = dobleSuma(2 + pepe.edad, local);
-    local = dobleSuma(pepe.edad + 2, local);
-    local = dobleSuma(pepe.edad + v[1], local);
     local = local + 1;
   }
 

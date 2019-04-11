@@ -141,7 +141,7 @@ public class CodeSelection extends DefaultVisitor {
 	// class If { Expr condicion; List<Sentencia> verdadero; List<Sentencia> falso;
 	// }
 	public Object visit(If node, Object param) {
-		out("#line " + node.getEnd().getLine());
+		out("#line " + node.getStart().getLine());
 		int contadorIfs = this.contadorIfs;
 		this.contadorIfs++;
 		// super.visit(node, param);
