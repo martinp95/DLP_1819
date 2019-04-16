@@ -69,7 +69,7 @@ expr returns[Expr ast]
 	| expr '&&' expr { $ast = new ExprLogica($ctx.expr(0), "&&", $ctx.expr(1));}
 	| expr '||' expr { $ast = new ExprLogica($ctx.expr(0), "||", $ctx.expr(1));}
 	| IDENT '(' parametrosOpt ')' { $ast = new LlamFuncExp($IDENT, $parametrosOpt.lista);}
-	| expr '?' expr ':' expr;
+	| expr '?' expr ':' expr { $ast = new OperadorTernario($ctx.expr(0), $ctx.expr(1), $ctx.expr(2));};
 
 defStruct returns[DefStruct ast]
 		: 'struct' IDENT '{' campos '}' ';'{ $ast = new DefStruct($IDENT,$campos.lista);};

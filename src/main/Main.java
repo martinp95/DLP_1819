@@ -52,8 +52,8 @@ public class Main {
 		AST ast = null;
 
 		// IMPORTANTE: Cuando se genere el AST, INTERCAMBIAR las dos líneas siguientes:
-		 parser.start();
-		//ast = parser.start().ast;
+		 //parser.start();
+		ast = parser.start().ast;
 
 		// Comentar para que salga el html, descomentar linea anterior
 		// PrintVisitor pv = new PrintVisitor();

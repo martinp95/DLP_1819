@@ -1,10 +1,12 @@
 // Tipos simples ---------
 var a:int;
-var b:char;
+var b:int;
 
 main() {
 
 	var c:int;
+	
+	// hay que inicializar a y b para poder probar que sino me va a petar
 
 	c = a < b ? 1 : 0;
 	
