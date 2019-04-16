@@ -21,8 +21,30 @@
 
 <body><pre>
 [ASTPrinter] -------------------------------- line:col  line:col
-raiz == null
 
+<span class="dots"></span>Programa &rarr;                                                  <span class="pos">1:1  9:20    </span><span class="sourceText"></span><span class="posText">main(){</span><span class="sourceText"> ... </span><span class="posText">}while( numero < 10</span><span class="sourceText"> );</span>
+<span class="dots">.  </span>definicion  <span class="type">List&lt;Definicion&gt;</span> = 
+<span class="dots">.  .  </span>DefFuncion &rarr;                                          <span class="pos">1:1  9:20    </span><span class="sourceText"></span><span class="posText">main(){</span><span class="sourceText"> ... </span><span class="posText">}while( numero < 10</span><span class="sourceText"> );</span>
+<span class="dots">.  .  |  </span>"<span class="value">main</span>"  
+<span class="dots">.  .  |  </span>parametro  <span class="type">List&lt;Parametro&gt;</span> = 
+<span class="dots">.  .  |  </span><span class="null">null</span>  tipo:<span class="type">Tipo</span>
+<span class="dots">.  .  |  </span>defvariable  <span class="type">List&lt;DefVariable&gt;</span> = 
+<span class="dots">.  .  |  .  </span>DefVariable &rarr;                                   <span class="pos">2:6  2:11    </span><span class="sourceText">var </span><span class="posText">numero</span><span class="sourceText">:int;</span>
+<span class="dots">.  .  |  .  |  </span>"<span class="value">numero</span>"  
+<span class="dots">.  .  |  .  |  </span><span class="value">IntType</span> &rarr;                                    <span class="pos"><span class="null">null</span>  <span class="null">null</span>   </span>
+<span class="dots">.  .  |  .  |  </span>"<span class="value">local</span>"  
+<span class="dots">.  .  |  </span>sentencia  <span class="type">List&lt;Sentencia&gt;</span> = 
+<span class="dots">.  .  |  .  </span>DoWhile &rarr;                                       <span class="pos">4:8  9:20    </span><span class="sourceText">read </span><span class="posText">numero;//pide un numero y lo </span><span class="sourceText"> ... </span><span class="posText">}while( numero < 10</span><span class="sourceText"> );</span>
+<span class="dots">.  .  |  .  |  </span>sentencia  <span class="type">List&lt;Sentencia&gt;</span> = 
+<span class="dots">.  .  |  .  |  .  </span>Read &rarr;                                    <span class="pos">4:8  4:13    </span><span class="sourceText">read </span><span class="posText">numero</span><span class="sourceText">;//pide un numero y lo </span>
+<span class="dots">.  .  |  .  |  .  |  </span>"numero"  <span class="type">IdentConstant.valor</span>          <span class="pos">4:8  4:13    </span><span class="sourceText">read </span><span class="posText">numero</span><span class="sourceText">;//pide un numero y lo </span>
+<span class="dots">.  .  |  .  |  .  </span>Print &rarr;                                   <span class="pos">7:11  7:16   </span><span class="sourceText">println </span><span class="posText">numero</span><span class="sourceText">;</span>
+<span class="dots">.  .  |  .  |  .  |  </span>"numero"  <span class="type">IdentConstant.valor</span>          <span class="pos">7:11  7:16   </span><span class="sourceText">println </span><span class="posText">numero</span><span class="sourceText">;</span>
+<span class="dots">.  .  |  .  |  .  |  </span>"<span class="value">ln</span>"  
+<span class="dots">.  .  |  .  |  </span>ExprCondicion &rarr;                              <span class="pos">9:10  9:20   </span><span class="sourceText">}while( </span><span class="posText">numero < 10</span><span class="sourceText"> );</span>
+<span class="dots">.  .  |  .  |  .  </span>"numero"  <span class="type">IdentConstant.valor</span>             <span class="pos">9:10  9:15   </span><span class="sourceText">}while( </span><span class="posText">numero</span><span class="sourceText"> < 10 );</span>
+<span class="dots">.  .  |  .  |  .  </span>"<span class="value"><</span>"  
+<span class="dots">.  .  |  .  |  .  </span>"10"  <span class="type">IntConstant.valor</span>                   <span class="pos">9:19  9:20   </span><span class="sourceText">}while( numero < </span><span class="posText">10</span><span class="sourceText"> );</span>
 
 [ASTPrinter] --------------------------------
 </pre>

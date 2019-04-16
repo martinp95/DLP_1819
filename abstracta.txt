@@ -23,6 +23,7 @@ read:sentencia -> leer:expr;
 asignacion:sentencia -> left:expr right:expr;
 if:sentencia -> condicion:expr verdadero:sentencia* falso:sentencia*;
 while:sentencia -> condicion:expr sentencia*;
+doWhile:sentencia -> sentencia* condicion:expr;
 llamadaFuncion:sentencia -> nombre:string parametrosOpt:expr*;
 return:sentencia -> retorno:expr;
 

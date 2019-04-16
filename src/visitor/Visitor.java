@@ -23,6 +23,7 @@ public interface Visitor {
 	public Object visit(Asignacion node, Object param);
 	public Object visit(If node, Object param);
 	public Object visit(While node, Object param);
+	public Object visit(DoWhile node, Object param);
 	public Object visit(LlamadaFuncion node, Object param);
 	public Object visit(Return node, Object param);
 	public Object visit(IntConstant node, Object param);

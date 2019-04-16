@@ -124,6 +124,14 @@ public class DefaultVisitor implements Visitor {
 		return null;
 	}
 
+	//	class DoWhile { List<Sentencia> sentencia;  Expr condicion; }
+	public Object visit(DoWhile node, Object param) {
+		visitChildren(node.getSentencia(), param);
+		if (node.getCondicion() != null)
+			node.getCondicion().accept(this, param);
+		return null;
+	}
+
 	//	class LlamadaFuncion { String nombre;  List<Expr> parametrosOpt; }
 	public Object visit(LlamadaFuncion node, Object param) {
 		visitChildren(node.getParametrosOpt(), param);
