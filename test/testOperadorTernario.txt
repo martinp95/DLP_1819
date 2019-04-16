@@ -1,0 +1,13 @@
+// Tipos simples ---------
+var a:int;
+var b:char;
+
+main() {
+
+	var c:int;
+
+	c = a < b ? 1 : 0;
+	
+	println(c);
+
+}
