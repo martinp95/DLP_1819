@@ -1,0 +1,11 @@
+main(){
+	var numero:int;
+	do{
+		read numero;//pide un numero y lo 
+		//imprime mientras que este sema menor que 10
+		
+		println numero;
+	
+	}while( numero < 10 );
+
+}

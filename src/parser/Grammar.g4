@@ -41,7 +41,8 @@ sentencia returns[Sentencia ast]
 	| expr '=' expr ';' { $ast = new Asignacion($ctx.expr(0), $ctx.expr(1));}												
 	| 'if' '(' expr ')' '{' sentencias '}'	{ $ast = new If($expr.ast, $sentencias.lista, null);}						
 	| 'if' '(' expr ')' '{' sentencias '}' 'else' '{' sentencias '}' { $ast = new If($expr.ast, $ctx.sentencias(0).lista, $ctx.sentencias(1).lista);}	
-	| 'while' '(' expr ')' '{' sentencias '}' {$ast = new While($expr.ast, $sentencias.lista);}									
+	| 'while' '(' expr ')' '{' sentencias '}' {$ast = new While($expr.ast, $sentencias.lista);}
+	| 'do' '{' sentencias '}' 'while' '(' expr ')'';'						
 	| IDENT '(' parametrosOpt ')' ';' { $ast = new LlamadaFuncion($IDENT, $parametrosOpt.lista);}										
 	| 'return' expr ';' { $ast = new Return($expr.ast);}
 	| 'return' ';' { $ast = new Return(null);};
