@@ -1,29 +1,78 @@
 #source "testOperadorTernario.txt"
 call main
 halt
-#GLOBAL a:int
-#GLOBAL b:int
-#line 5
-main:
-enter 2
-#line 11
+#line 1
+f:
+enter 0
+#line 2
 pusha BP
-push -2
-add
-pusha 0
-loadi
-pusha 2
-loadi
-lti
-pushi 1
-pushi 0
-storei
-#line 13
-pusha BP
-push -2
+push 4
 add
 loadi
 outi
 pushb 10
 outb
-ret 0, 2, 0
+ret 0, 0, 2
+#line 5
+main:
+enter 6
+#line 10
+pusha BP
+push -6
+add
+pushf 0.0
+storef
+#line 11
+pusha BP
+push -2
+add
+pushi 0
+storei
+#line 12
+pusha BP
+push -2
+add
+ini
+storei
+#line 14
+#line 14
+pusha BP
+push -2
+add
+loadi
+pushi 0
+gti
+jz else0
+pushi 1
+jmp finif0
+else0:
+pushi 2
+finif0:
+outi
+pushb 10
+outb
+#line 15
+pusha BP
+push -2
+add
+loadi
+pushi 0
+gti
+jz else1
+pusha BP
+push -2
+add
+loadi
+pushi 1
+addi
+jmp finif1
+else1:
+pusha BP
+push -2
+add
+loadi
+pushi 1
+subi
+finif1:
+call f
+ret 0, 6, 0

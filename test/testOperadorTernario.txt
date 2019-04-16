@@ -1,15 +1,20 @@
-// Tipos simples ---------
-var a:int;
-var b:int;
+f(a:int) {
+	println a;
+}
 
 main() {
 
-	var c:int;
-	
-	// hay que inicializar a y b para poder probar que sino me va a petar
+  var a: int;
+  var x: float;
+  
+  x = 0.0;
+  a = 0;
+  read a;
+  
+  println a > 0 ? 1 : 2;
+  f(a > 0 ? a + 1 : a - 1);
 
-	c = a < b ? 1 : 0;
-	
-	println(c);
+  //print x ? 0 : 1; // Error x no es entero
+  //print a > 0 ? x : 1; // Error x y 1 no son del mismo tipo (o hacer conversion implicita).
 
 }

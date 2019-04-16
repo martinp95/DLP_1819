@@ -131,29 +131,6 @@ public class TypeChecking extends DefaultVisitor {
 		return null;
 	}
 
-//	class OperadorTernario { Expr condicion;  Expr verdadero;  Expr falso; }
-	public Object visit(OperadorTernario node, Object param) {
-
-		// super.visit(node, param);
-
-		if (node.getCondicion() != null)
-			node.getCondicion().accept(this, param);
-
-		predicado(node.getCondicion().getTipo() instanceof IntType, "La condicion debe de ser de tipo entero", node);
-
-		if (node.getVerdadero() != null)
-			node.getVerdadero().accept(this, param);
-
-		if (node.getFalso() != null)
-			node.getFalso().accept(this, param);
-
-		predicado(isIgualTipo(node.getVerdadero().getTipo(), node.getFalso().getTipo()), "Deben ser del mismo tipo",
-				node);
-		node.setTipo(node.getVerdadero().getTipo());
-
-		return null;
-	}
-
 	// class While { Expr condicion; List<Sentencia> sentencia; }
 	public Object visit(While node, Object param) {
 
@@ -346,6 +323,29 @@ public class TypeChecking extends DefaultVisitor {
 		}
 		node.setTipo(node.getDefinicion().getTipo());
 		node.setModificable(false);
+		return null;
+	}
+
+	// class OperadorTernario { Expr condicion; Expr verdadero; Expr falso; }
+	public Object visit(OperadorTernario node, Object param) {
+
+		// super.visit(node, param);
+
+		if (node.getCondicion() != null)
+			node.getCondicion().accept(this, param);
+
+		predicado(node.getCondicion().getTipo() instanceof IntType, "La condicion debe de ser de tipo entero", node);
+
+		if (node.getVerdadero() != null)
+			node.getVerdadero().accept(this, param);
+
+		if (node.getFalso() != null)
+			node.getFalso().accept(this, param);
+
+		predicado(isIgualTipo(node.getVerdadero().getTipo(), node.getFalso().getTipo()), "Deben ser del mismo tipo",
+				node);
+		node.setTipo(node.getVerdadero().getTipo());
+
 		return null;
 	}
 

@@ -169,6 +169,30 @@ public class CodeSelection extends DefaultVisitor {
 		return null;
 	}
 
+	// class OperadorTernario { Expr condicion; Expr verdadero; Expr falso; }
+	public Object visit(OperadorTernario node, Object param) {
+		out("#line " + node.getEnd().getLine());
+		int contadorIfs = this.contadorIfs;
+		this.contadorIfs++;
+
+		node.getCondicion().accept(this, Funcion.VALOR);
+
+		if (node.getFalso() != null) {
+			out("jz else" + contadorIfs);
+		} else {
+			out("jz finif" + contadorIfs);
+		}
+		node.getVerdadero().accept(this, param);
+
+		if (node.getFalso() != null) {
+			out("jmp finif" + contadorIfs);
+			out("else" + contadorIfs + ":");
+			node.getFalso().accept(this, param);
+		}
+		out("finif" + contadorIfs + ":");
+		return null;
+	}
+
 	// class While { Expr condicion; List<Sentencia> sentencia; }
 	public Object visit(While node, Object param) {
 		out("#line " + node.getCondicion().getStart().getLine());

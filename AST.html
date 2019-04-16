@@ -22,38 +22,67 @@
 <body><pre>
 [ASTPrinter] -------------------------------- line:col  line:col
 
-<span class="dots"></span>Programa &rarr;                                                  <span class="pos">2:5  13:10   </span><span class="sourceText">var </span><span class="posText">a:int;</span><span class="sourceText"> ... </span><span class="posText">println(c</span><span class="sourceText">);</span>
+<span class="dots"></span>Programa &rarr;                                                  <span class="pos">1:1  15:25   </span><span class="sourceText"></span><span class="posText">f(a:int) {</span><span class="sourceText"> ... </span><span class="posText">f(a > 0 ? a + 1 : a - 1</span><span class="sourceText">);</span>
 <span class="dots">.  </span>definicion  <span class="type">List&lt;Definicion&gt;</span> = 
-<span class="dots">.  .  </span>DefVariable &rarr;                                         <span class="pos">2:5  2:5     </span><span class="sourceText">var </span><span class="posText">a</span><span class="sourceText">:int;</span>
-<span class="dots">.  .  |  </span>"<span class="value">a</span>"  
-<span class="dots">.  .  |  </span><span class="value">IntType</span> &rarr;                                          <span class="pos"><span class="null">null</span>  <span class="null">null</span>   </span>
-<span class="dots">.  .  |  </span>"<span class="value">global</span>"  
-<span class="dots">.  .  </span>DefVariable &rarr;                                         <span class="pos">3:5  3:5     </span><span class="sourceText">var </span><span class="posText">b</span><span class="sourceText">:int;</span>
-<span class="dots">.  .  |  </span>"<span class="value">b</span>"  
-<span class="dots">.  .  |  </span><span class="value">IntType</span> &rarr;                                          <span class="pos"><span class="null">null</span>  <span class="null">null</span>   </span>
-<span class="dots">.  .  |  </span>"<span class="value">global</span>"  
-<span class="dots">.  .  </span>DefFuncion &rarr;                                          <span class="pos">5:1  13:10   </span><span class="sourceText"></span><span class="posText">main() {</span><span class="sourceText"> ... </span><span class="posText">println(c</span><span class="sourceText">);</span>
+<span class="dots">.  .  </span>DefFuncion &rarr;                                          <span class="pos">1:1  2:10    </span><span class="sourceText"></span><span class="posText">f(a:int) {</span><span class="sourceText"> ... </span><span class="posText">println a</span><span class="sourceText">;</span>
+<span class="dots">.  .  |  </span>"<span class="value">f</span>"  
+<span class="dots">.  .  |  </span>parametro  <span class="type">List&lt;Parametro&gt;</span> = 
+<span class="dots">.  .  |  .  </span>Parametro &rarr;                                     <span class="pos">1:3  1:3     </span><span class="sourceText">f(</span><span class="posText">a</span><span class="sourceText">:int) {</span>
+<span class="dots">.  .  |  .  |  </span>"<span class="value">a</span>"  
+<span class="dots">.  .  |  .  |  </span><span class="value">IntType</span> &rarr;                                    <span class="pos"><span class="null">null</span>  <span class="null">null</span>   </span>
+<span class="dots">.  .  |  </span><span class="null">null</span>  tipo:<span class="type">Tipo</span>
+<span class="dots">.  .  |  </span>defvariable  <span class="type">List&lt;DefVariable&gt;</span> = 
+<span class="dots">.  .  |  </span>sentencia  <span class="type">List&lt;Sentencia&gt;</span> = 
+<span class="dots">.  .  |  .  </span>Print &rarr;                                         <span class="pos">2:10  2:10   </span><span class="sourceText">println </span><span class="posText">a</span><span class="sourceText">;</span>
+<span class="dots">.  .  |  .  |  </span>"a"  <span class="type">IdentConstant.valor</span>                     <span class="pos">2:10  2:10   </span><span class="sourceText">println </span><span class="posText">a</span><span class="sourceText">;</span>
+<span class="dots">.  .  |  .  |  </span>"<span class="value">ln</span>"  
+<span class="dots">.  .  </span>DefFuncion &rarr;                                          <span class="pos">5:1  15:25   </span><span class="sourceText"></span><span class="posText">main() {</span><span class="sourceText"> ... </span><span class="posText">f(a > 0 ? a + 1 : a - 1</span><span class="sourceText">);</span>
 <span class="dots">.  .  |  </span>"<span class="value">main</span>"  
 <span class="dots">.  .  |  </span>parametro  <span class="type">List&lt;Parametro&gt;</span> = 
 <span class="dots">.  .  |  </span><span class="null">null</span>  tipo:<span class="type">Tipo</span>
 <span class="dots">.  .  |  </span>defvariable  <span class="type">List&lt;DefVariable&gt;</span> = 
-<span class="dots">.  .  |  .  </span>DefVariable &rarr;                                   <span class="pos">7:6  7:6     </span><span class="sourceText">var </span><span class="posText">c</span><span class="sourceText">:int;</span>
-<span class="dots">.  .  |  .  |  </span>"<span class="value">c</span>"  
+<span class="dots">.  .  |  .  </span>DefVariable &rarr;                                   <span class="pos">7:7  7:7     </span><span class="sourceText">var </span><span class="posText">a</span><span class="sourceText">: int;</span>
+<span class="dots">.  .  |  .  |  </span>"<span class="value">a</span>"  
 <span class="dots">.  .  |  .  |  </span><span class="value">IntType</span> &rarr;                                    <span class="pos"><span class="null">null</span>  <span class="null">null</span>   </span>
 <span class="dots">.  .  |  .  |  </span>"<span class="value">local</span>"  
+<span class="dots">.  .  |  .  </span>DefVariable &rarr;                                   <span class="pos">8:7  8:7     </span><span class="sourceText">var </span><span class="posText">x</span><span class="sourceText">: float;</span>
+<span class="dots">.  .  |  .  |  </span>"<span class="value">x</span>"  
+<span class="dots">.  .  |  .  |  </span><span class="value">FloatType</span> &rarr;                                  <span class="pos"><span class="null">null</span>  <span class="null">null</span>   </span>
+<span class="dots">.  .  |  .  |  </span>"<span class="value">local</span>"  
 <span class="dots">.  .  |  </span>sentencia  <span class="type">List&lt;Sentencia&gt;</span> = 
-<span class="dots">.  .  |  .  </span>Asignacion &rarr;                                    <span class="pos">11:2  11:18  </span><span class="sourceText"></span><span class="posText">c = a < b ? 1 : 0</span><span class="sourceText">;</span>
-<span class="dots">.  .  |  .  |  </span>"c"  <span class="type">IdentConstant.valor</span>                     <span class="pos">11:2  11:2   </span><span class="sourceText"></span><span class="posText">c</span><span class="sourceText"> = a < b ? 1 : 0;</span>
-<span class="dots">.  .  |  .  |  </span>OperadorTernario &rarr;                           <span class="pos">11:6  11:18  </span><span class="sourceText">c = </span><span class="posText">a < b ? 1 : 0</span><span class="sourceText">;</span>
-<span class="dots">.  .  |  .  |  .  </span>ExprCondicion &rarr;                           <span class="pos">11:6  11:10  </span><span class="sourceText">c = </span><span class="posText">a < b</span><span class="sourceText"> ? 1 : 0;</span>
-<span class="dots">.  .  |  .  |  .  |  </span>"a"  <span class="type">IdentConstant.valor</span>               <span class="pos">11:6  11:6   </span><span class="sourceText">c = </span><span class="posText">a</span><span class="sourceText"> < b ? 1 : 0;</span>
-<span class="dots">.  .  |  .  |  .  |  </span>"<span class="value"><</span>"  
-<span class="dots">.  .  |  .  |  .  |  </span>"b"  <span class="type">IdentConstant.valor</span>               <span class="pos">11:10  11:10 </span><span class="sourceText">c = a < </span><span class="posText">b</span><span class="sourceText"> ? 1 : 0;</span>
-<span class="dots">.  .  |  .  |  .  </span>"1"  <span class="type">IntConstant.valor</span>                    <span class="pos">11:14  11:14 </span><span class="sourceText">c = a < b ? </span><span class="posText">1</span><span class="sourceText"> : 0;</span>
-<span class="dots">.  .  |  .  |  .  </span>"0"  <span class="type">IntConstant.valor</span>                    <span class="pos">11:18  11:18 </span><span class="sourceText">c = a < b ? 1 : </span><span class="posText">0</span><span class="sourceText">;</span>
-<span class="dots">.  .  |  .  </span>Print &rarr;                                         <span class="pos">13:10  13:10 </span><span class="sourceText">println(</span><span class="posText">c</span><span class="sourceText">);</span>
-<span class="dots">.  .  |  .  |  </span>"c"  <span class="type">IdentConstant.valor</span>                     <span class="pos">13:10  13:10 </span><span class="sourceText">println(</span><span class="posText">c</span><span class="sourceText">);</span>
+<span class="dots">.  .  |  .  </span>Asignacion &rarr;                                    <span class="pos">10:3  10:9   </span><span class="sourceText"></span><span class="posText">x = 0.0</span><span class="sourceText">;</span>
+<span class="dots">.  .  |  .  |  </span>"x"  <span class="type">IdentConstant.valor</span>                     <span class="pos">10:3  10:3   </span><span class="sourceText"></span><span class="posText">x</span><span class="sourceText"> = 0.0;</span>
+<span class="dots">.  .  |  .  |  </span>"0.0"  <span class="type">RealConstant.valor</span>                    <span class="pos">10:7  10:9   </span><span class="sourceText">x = </span><span class="posText">0.0</span><span class="sourceText">;</span>
+<span class="dots">.  .  |  .  </span>Asignacion &rarr;                                    <span class="pos">11:3  11:7   </span><span class="sourceText"></span><span class="posText">a = 0</span><span class="sourceText">;</span>
+<span class="dots">.  .  |  .  |  </span>"a"  <span class="type">IdentConstant.valor</span>                     <span class="pos">11:3  11:3   </span><span class="sourceText"></span><span class="posText">a</span><span class="sourceText"> = 0;</span>
+<span class="dots">.  .  |  .  |  </span>"0"  <span class="type">IntConstant.valor</span>                       <span class="pos">11:7  11:7   </span><span class="sourceText">a = </span><span class="posText">0</span><span class="sourceText">;</span>
+<span class="dots">.  .  |  .  </span>Read &rarr;                                          <span class="pos">12:8  12:8   </span><span class="sourceText">read </span><span class="posText">a</span><span class="sourceText">;</span>
+<span class="dots">.  .  |  .  |  </span>"a"  <span class="type">IdentConstant.valor</span>                     <span class="pos">12:8  12:8   </span><span class="sourceText">read </span><span class="posText">a</span><span class="sourceText">;</span>
+<span class="dots">.  .  |  .  </span>Print &rarr;                                         <span class="pos">14:11  14:23 </span><span class="sourceText">println </span><span class="posText">a > 0 ? 1 : 2</span><span class="sourceText">;</span>
+<span class="dots">.  .  |  .  |  </span>OperadorTernario &rarr;                           <span class="pos">14:11  14:23 </span><span class="sourceText">println </span><span class="posText">a > 0 ? 1 : 2</span><span class="sourceText">;</span>
+<span class="dots">.  .  |  .  |  .  </span>ExprCondicion &rarr;                           <span class="pos">14:11  14:15 </span><span class="sourceText">println </span><span class="posText">a > 0</span><span class="sourceText"> ? 1 : 2;</span>
+<span class="dots">.  .  |  .  |  .  |  </span>"a"  <span class="type">IdentConstant.valor</span>               <span class="pos">14:11  14:11 </span><span class="sourceText">println </span><span class="posText">a</span><span class="sourceText"> > 0 ? 1 : 2;</span>
+<span class="dots">.  .  |  .  |  .  |  </span>"<span class="value">></span>"  
+<span class="dots">.  .  |  .  |  .  |  </span>"0"  <span class="type">IntConstant.valor</span>                 <span class="pos">14:15  14:15 </span><span class="sourceText">println a > </span><span class="posText">0</span><span class="sourceText"> ? 1 : 2;</span>
+<span class="dots">.  .  |  .  |  .  </span>"1"  <span class="type">IntConstant.valor</span>                    <span class="pos">14:19  14:19 </span><span class="sourceText">println a > 0 ? </span><span class="posText">1</span><span class="sourceText"> : 2;</span>
+<span class="dots">.  .  |  .  |  .  </span>"2"  <span class="type">IntConstant.valor</span>                    <span class="pos">14:23  14:23 </span><span class="sourceText">println a > 0 ? 1 : </span><span class="posText">2</span><span class="sourceText">;</span>
 <span class="dots">.  .  |  .  |  </span>"<span class="value">ln</span>"  
+<span class="dots">.  .  |  .  </span>LlamadaFuncion &rarr;                                <span class="pos">15:3  15:25  </span><span class="sourceText"></span><span class="posText">f(a > 0 ? a + 1 : a - 1</span><span class="sourceText">);</span>
+<span class="dots">.  .  |  .  |  </span>"<span class="value">f</span>"  
+<span class="dots">.  .  |  .  |  </span>parametrosOpt  <span class="type">List&lt;Expr&gt;</span> = 
+<span class="dots">.  .  |  .  |  .  </span>OperadorTernario &rarr;                        <span class="pos">15:5  15:25  </span><span class="sourceText">f(</span><span class="posText">a > 0 ? a + 1 : a - 1</span><span class="sourceText">);</span>
+<span class="dots">.  .  |  .  |  .  |  </span>ExprCondicion &rarr;                        <span class="pos">15:5  15:9   </span><span class="sourceText">f(</span><span class="posText">a > 0</span><span class="sourceText"> ? a + 1 : a - 1);</span>
+<span class="dots">.  .  |  .  |  .  |  .  </span>"a"  <span class="type">IdentConstant.valor</span>            <span class="pos">15:5  15:5   </span><span class="sourceText">f(</span><span class="posText">a</span><span class="sourceText"> > 0 ? a + 1 : a - 1);</span>
+<span class="dots">.  .  |  .  |  .  |  .  </span>"<span class="value">></span>"  
+<span class="dots">.  .  |  .  |  .  |  .  </span>"0"  <span class="type">IntConstant.valor</span>              <span class="pos">15:9  15:9   </span><span class="sourceText">f(a > </span><span class="posText">0</span><span class="sourceText"> ? a + 1 : a - 1);</span>
+<span class="dots">.  .  |  .  |  .  |  </span>ExprAritmetica &rarr;                       <span class="pos">15:13  15:17 </span><span class="sourceText">f(a > 0 ? </span><span class="posText">a + 1</span><span class="sourceText"> : a - 1);</span>
+<span class="dots">.  .  |  .  |  .  |  .  </span>"a"  <span class="type">IdentConstant.valor</span>            <span class="pos">15:13  15:13 </span><span class="sourceText">f(a > 0 ? </span><span class="posText">a</span><span class="sourceText"> + 1 : a - 1);</span>
+<span class="dots">.  .  |  .  |  .  |  .  </span>"<span class="value">+</span>"  
+<span class="dots">.  .  |  .  |  .  |  .  </span>"1"  <span class="type">IntConstant.valor</span>              <span class="pos">15:17  15:17 </span><span class="sourceText">f(a > 0 ? a + </span><span class="posText">1</span><span class="sourceText"> : a - 1);</span>
+<span class="dots">.  .  |  .  |  .  |  </span>ExprAritmetica &rarr;                       <span class="pos">15:21  15:25 </span><span class="sourceText">f(a > 0 ? a + 1 : </span><span class="posText">a - 1</span><span class="sourceText">);</span>
+<span class="dots">.  .  |  .  |  .  |  .  </span>"a"  <span class="type">IdentConstant.valor</span>            <span class="pos">15:21  15:21 </span><span class="sourceText">f(a > 0 ? a + 1 : </span><span class="posText">a</span><span class="sourceText"> - 1);</span>
+<span class="dots">.  .  |  .  |  .  |  .  </span>"<span class="value">-</span>"  
+<span class="dots">.  .  |  .  |  .  |  .  </span>"1"  <span class="type">IntConstant.valor</span>              <span class="pos">15:25  15:25 </span><span class="sourceText">f(a > 0 ? a + 1 : a - </span><span class="posText">1</span><span class="sourceText">);</span>
 
 [ASTPrinter] --------------------------------
 </pre>
