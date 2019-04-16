@@ -1,0 +1,10 @@
+main() {
+  var a: int;
+  var i: int;
+  i = 1;
+  a = ++i;
+  print a;
+  a = a++;
+  print a;
+  
+}
