@@ -5,6 +5,8 @@ halt
 main:
 enter 2
 #line 4
+inicioWhile0:
+#line 4
 pusha BP
 push -2
 add
@@ -18,6 +20,11 @@ loadi
 outi
 pushb 10
 outb
+pusha BP
+push -2
+add
+loadi
 pushi 10
 lti
+jnz inicioWhile0
 ret 0, 2, 0

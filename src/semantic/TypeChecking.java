@@ -150,6 +150,19 @@ public class TypeChecking extends DefaultVisitor {
 		return null;
 	}
 
+	// class DoWhile { List<Sentencia> sentencia; Expr condicion; }
+	public Object visit(DoWhile node, Object param) {
+		if (node.getSentencia() != null)
+			for (Sentencia child : node.getSentencia()) {
+				child.setFuncion(node.getFuncion());
+				child.accept(this, param);
+			}
+		if (node.getCondicion() != null)
+			node.getCondicion().accept(this, param);		
+		predicado(node.getCondicion().getTipo() instanceof IntType, "La condicion debe de ser de tipo entero", node);
+		return null;
+	}
+
 	// class IntConstant { String valor; }
 	public Object visit(IntConstant node, Object param) {
 		node.setModificable(false);

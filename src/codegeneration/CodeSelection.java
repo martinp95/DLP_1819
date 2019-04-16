@@ -183,6 +183,18 @@ public class CodeSelection extends DefaultVisitor {
 		return null;
 	}
 
+	// class DoWhile { List<Sentencia> sentencia; Expr condicion; }
+	public Object visit(DoWhile node, Object param) {
+		out("#line " + node.getStart().getLine());
+		int contadorWhile = this.contadorWhile;
+		this.contadorWhile++;
+		out("inicioWhile" + contadorWhile + ":");
+		visitChildren(node.getSentencia(), param);
+		node.getCondicion().accept(this, Funcion.VALOR);
+		out("jnz inicioWhile" + contadorWhile);
+		return null;
+	}
+
 	// class LlamadaFuncion { String nombre; List<Expr> parametrosOpt; }
 	public Object visit(LlamadaFuncion node, Object param) {
 		if (node.getParametrosOpt() != null)
