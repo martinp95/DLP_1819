@@ -21,8 +21,78 @@
 
 <body><pre>
 [ASTPrinter] -------------------------------- line:col  line:col
-raiz == null
 
+<span class="dots"></span>Programa &rarr;                                                  <span class="pos">1:1  21:15   </span><span class="sourceText"></span><span class="posText">main() {</span><span class="sourceText"> ... </span><span class="posText">println(local3</span><span class="sourceText">);</span>
+<span class="dots">.  </span>definicion  <span class="type">List&lt;Definicion&gt;</span> = 
+<span class="dots">.  .  </span>DefFuncion &rarr;                                          <span class="pos">1:1  21:15   </span><span class="sourceText"></span><span class="posText">main() {</span><span class="sourceText"> ... </span><span class="posText">println(local3</span><span class="sourceText">);</span>
+<span class="dots">.  .  |  </span>"<span class="value">main</span>"  
+<span class="dots">.  .  |  </span>parametro  <span class="type">List&lt;Parametro&gt;</span> = 
+<span class="dots">.  .  |  </span><span class="null">null</span>  tipo:<span class="type">Tipo</span>
+<span class="dots">.  .  |  </span>defvariable  <span class="type">List&lt;DefVariable&gt;</span> = 
+<span class="dots">.  .  |  .  </span>DefVariable &rarr;                                   <span class="pos">2:6  2:10    </span><span class="sourceText">var </span><span class="posText">local</span><span class="sourceText">:int;</span>
+<span class="dots">.  .  |  .  |  </span>"<span class="value">local</span>"  
+<span class="dots">.  .  |  .  |  </span><span class="value">IntType</span> &rarr;                                    <span class="pos"><span class="null">null</span>  <span class="null">null</span>   </span>
+<span class="dots">.  .  |  .  |  </span>"<span class="value">local</span>"  
+<span class="dots">.  .  |  .  |  </span><span class="value">-2</span>  <span class="type">{IntType}</span>
+<span class="dots">.  .  |  .  </span>DefVariable &rarr;                                   <span class="pos">3:6  3:11    </span><span class="sourceText">var </span><span class="posText">local2</span><span class="sourceText">:int;</span>
+<span class="dots">.  .  |  .  |  </span>"<span class="value">local2</span>"  
+<span class="dots">.  .  |  .  |  </span><span class="value">IntType</span> &rarr;                                    <span class="pos"><span class="null">null</span>  <span class="null">null</span>   </span>
+<span class="dots">.  .  |  .  |  </span>"<span class="value">local</span>"  
+<span class="dots">.  .  |  .  |  </span><span class="value">-4</span>  <span class="type">{IntType}</span>
+<span class="dots">.  .  |  .  </span>DefVariable &rarr;                                   <span class="pos">4:6  4:11    </span><span class="sourceText">var </span><span class="posText">local3</span><span class="sourceText">:float;</span>
+<span class="dots">.  .  |  .  |  </span>"<span class="value">local3</span>"  
+<span class="dots">.  .  |  .  |  </span><span class="value">FloatType</span> &rarr;                                  <span class="pos"><span class="null">null</span>  <span class="null">null</span>   </span>
+<span class="dots">.  .  |  .  |  </span>"<span class="value">local</span>"  
+<span class="dots">.  .  |  .  |  </span><span class="value">-8</span>  <span class="type">{FloatType}</span>
+<span class="dots">.  .  |  </span>sentencia  <span class="type">List&lt;Sentencia&gt;</span> = 
+<span class="dots">.  .  |  .  </span>Asignacion &rarr;                                    <span class="pos">5:2  5:10    </span><span class="sourceText"></span><span class="posText">local = 0</span><span class="sourceText">;</span>
+<span class="dots">.  .  |  .  |  </span>"local"  <span class="type">IdentConstant.valor</span>                 <span class="pos">5:2  5:6     </span><span class="sourceText"></span><span class="posText">local</span><span class="sourceText"> = 0;</span>
+<span class="dots">.  .  |  .  |  </span>"0"  <span class="type">IntConstant.valor</span>                       <span class="pos">5:10  5:10   </span><span class="sourceText">local = </span><span class="posText">0</span><span class="sourceText">;</span>
+<span class="dots">.  .  |  .  </span>Asignacion &rarr;                                    <span class="pos">6:2  6:11    </span><span class="sourceText"></span><span class="posText">local2 = 2</span><span class="sourceText">;</span>
+<span class="dots">.  .  |  .  |  </span>"local2"  <span class="type">IdentConstant.valor</span>                <span class="pos">6:2  6:7     </span><span class="sourceText"></span><span class="posText">local2</span><span class="sourceText"> = 2;</span>
+<span class="dots">.  .  |  .  |  </span>"2"  <span class="type">IntConstant.valor</span>                       <span class="pos">6:11  6:11   </span><span class="sourceText">local2 = </span><span class="posText">2</span><span class="sourceText">;</span>
+<span class="dots">.  .  |  .  </span>Asignacion &rarr;                                    <span class="pos">7:2  7:13    </span><span class="sourceText"></span><span class="posText">local3 = 2.0</span><span class="sourceText">;</span>
+<span class="dots">.  .  |  .  |  </span>"local3"  <span class="type">IdentConstant.valor</span>                <span class="pos">7:2  7:7     </span><span class="sourceText"></span><span class="posText">local3</span><span class="sourceText"> = 2.0;</span>
+<span class="dots">.  .  |  .  |  </span>"2.0"  <span class="type">RealConstant.valor</span>                    <span class="pos">7:11  7:13   </span><span class="sourceText">local3 = </span><span class="posText">2.0</span><span class="sourceText">;</span>
+<span class="dots">.  .  |  .  </span>Asignacion &rarr;                                    <span class="pos">11:2  11:10  </span><span class="sourceText"></span><span class="posText">local +=2</span><span class="sourceText">;</span>
+<span class="dots">.  .  |  .  |  </span>"local"  <span class="type">IdentConstant.valor</span>                 <span class="pos">11:2  11:6   </span><span class="sourceText"></span><span class="posText">local</span><span class="sourceText"> +=2;</span>
+<span class="dots">.  .  |  .  |  </span>ExprAritmetica &rarr;                             <span class="pos">11:2  11:10  </span><span class="sourceText"></span><span class="posText">local +=2</span><span class="sourceText">;</span>
+<span class="dots">.  .  |  .  |  .  </span>"local"  <span class="type">IdentConstant.valor</span>              <span class="pos">11:2  11:6   </span><span class="sourceText"></span><span class="posText">local</span><span class="sourceText"> +=2;</span>
+<span class="dots">.  .  |  .  |  .  </span>"<span class="value">+</span>"  
+<span class="dots">.  .  |  .  |  .  </span>"2"  <span class="type">IntConstant.valor</span>                    <span class="pos">11:10  11:10 </span><span class="sourceText">local +=</span><span class="posText">2</span><span class="sourceText">;</span>
+<span class="dots">.  .  |  .  </span>Print &rarr;                                         <span class="pos">12:10  12:14 </span><span class="sourceText">println(</span><span class="posText">local</span><span class="sourceText">);</span>
+<span class="dots">.  .  |  .  |  </span>"local"  <span class="type">IdentConstant.valor</span>                 <span class="pos">12:10  12:14 </span><span class="sourceText">println(</span><span class="posText">local</span><span class="sourceText">);</span>
+<span class="dots">.  .  |  .  |  </span>"<span class="value">ln</span>"  
+<span class="dots">.  .  |  .  </span>Asignacion &rarr;                                    <span class="pos">14:2  14:19  </span><span class="sourceText"></span><span class="posText">local2 += local2*2</span><span class="sourceText">;</span>
+<span class="dots">.  .  |  .  |  </span>"local2"  <span class="type">IdentConstant.valor</span>                <span class="pos">14:2  14:7   </span><span class="sourceText"></span><span class="posText">local2</span><span class="sourceText"> += local2*2;</span>
+<span class="dots">.  .  |  .  |  </span>ExprAritmetica &rarr;                             <span class="pos">14:2  14:19  </span><span class="sourceText"></span><span class="posText">local2 += local2*2</span><span class="sourceText">;</span>
+<span class="dots">.  .  |  .  |  .  </span>"local2"  <span class="type">IdentConstant.valor</span>             <span class="pos">14:2  14:7   </span><span class="sourceText"></span><span class="posText">local2</span><span class="sourceText"> += local2*2;</span>
+<span class="dots">.  .  |  .  |  .  </span>"<span class="value">+</span>"  
+<span class="dots">.  .  |  .  |  .  </span>ExprAritmetica &rarr;                          <span class="pos">14:12  14:19 </span><span class="sourceText">local2 += </span><span class="posText">local2*2</span><span class="sourceText">;</span>
+<span class="dots">.  .  |  .  |  .  |  </span>"local2"  <span class="type">IdentConstant.valor</span>          <span class="pos">14:12  14:17 </span><span class="sourceText">local2 += </span><span class="posText">local2</span><span class="sourceText">*2;</span>
+<span class="dots">.  .  |  .  |  .  |  </span>"<span class="value">*</span>"  
+<span class="dots">.  .  |  .  |  .  |  </span>"2"  <span class="type">IntConstant.valor</span>                 <span class="pos">14:19  14:19 </span><span class="sourceText">local2 += local2*</span><span class="posText">2</span><span class="sourceText">;</span>
+<span class="dots">.  .  |  .  </span>Print &rarr;                                         <span class="pos">15:10  15:15 </span><span class="sourceText">println(</span><span class="posText">local2</span><span class="sourceText">);</span>
+<span class="dots">.  .  |  .  |  </span>"local2"  <span class="type">IdentConstant.valor</span>                <span class="pos">15:10  15:15 </span><span class="sourceText">println(</span><span class="posText">local2</span><span class="sourceText">);</span>
+<span class="dots">.  .  |  .  |  </span>"<span class="value">ln</span>"  
+<span class="dots">.  .  |  .  </span>Asignacion &rarr;                                    <span class="pos">17:2  17:14  </span><span class="sourceText"></span><span class="posText">local3 *= 2.0</span><span class="sourceText">;</span>
+<span class="dots">.  .  |  .  |  </span>"local3"  <span class="type">IdentConstant.valor</span>                <span class="pos">17:2  17:7   </span><span class="sourceText"></span><span class="posText">local3</span><span class="sourceText"> *= 2.0;</span>
+<span class="dots">.  .  |  .  |  </span>ExprAritmetica &rarr;                             <span class="pos">17:2  17:14  </span><span class="sourceText"></span><span class="posText">local3 *= 2.0</span><span class="sourceText">;</span>
+<span class="dots">.  .  |  .  |  .  </span>"local3"  <span class="type">IdentConstant.valor</span>             <span class="pos">17:2  17:7   </span><span class="sourceText"></span><span class="posText">local3</span><span class="sourceText"> *= 2.0;</span>
+<span class="dots">.  .  |  .  |  .  </span>"<span class="value">*</span>"  
+<span class="dots">.  .  |  .  |  .  </span>"2.0"  <span class="type">RealConstant.valor</span>                 <span class="pos">17:12  17:14 </span><span class="sourceText">local3 *= </span><span class="posText">2.0</span><span class="sourceText">;</span>
+<span class="dots">.  .  |  .  </span>Print &rarr;                                         <span class="pos">18:10  18:15 </span><span class="sourceText">println(</span><span class="posText">local3</span><span class="sourceText">);</span>
+<span class="dots">.  .  |  .  |  </span>"local3"  <span class="type">IdentConstant.valor</span>                <span class="pos">18:10  18:15 </span><span class="sourceText">println(</span><span class="posText">local3</span><span class="sourceText">);</span>
+<span class="dots">.  .  |  .  |  </span>"<span class="value">ln</span>"  
+<span class="dots">.  .  |  .  </span>Asignacion &rarr;                                    <span class="pos">20:2  20:15  </span><span class="sourceText"></span><span class="posText">local3 /= 10.0</span><span class="sourceText">;</span>
+<span class="dots">.  .  |  .  |  </span>"local3"  <span class="type">IdentConstant.valor</span>                <span class="pos">20:2  20:7   </span><span class="sourceText"></span><span class="posText">local3</span><span class="sourceText"> /= 10.0;</span>
+<span class="dots">.  .  |  .  |  </span>ExprAritmetica &rarr;                             <span class="pos">20:2  20:15  </span><span class="sourceText"></span><span class="posText">local3 /= 10.0</span><span class="sourceText">;</span>
+<span class="dots">.  .  |  .  |  .  </span>"local3"  <span class="type">IdentConstant.valor</span>             <span class="pos">20:2  20:7   </span><span class="sourceText"></span><span class="posText">local3</span><span class="sourceText"> /= 10.0;</span>
+<span class="dots">.  .  |  .  |  .  </span>"<span class="value">/</span>"  
+<span class="dots">.  .  |  .  |  .  </span>"10.0"  <span class="type">RealConstant.valor</span>                <span class="pos">20:12  20:15 </span><span class="sourceText">local3 /= </span><span class="posText">10.0</span><span class="sourceText">;</span>
+<span class="dots">.  .  |  .  </span>Print &rarr;                                         <span class="pos">21:10  21:15 </span><span class="sourceText">println(</span><span class="posText">local3</span><span class="sourceText">);</span>
+<span class="dots">.  .  |  .  |  </span>"local3"  <span class="type">IdentConstant.valor</span>                <span class="pos">21:10  21:15 </span><span class="sourceText">println(</span><span class="posText">local3</span><span class="sourceText">);</span>
+<span class="dots">.  .  |  .  |  </span>"<span class="value">ln</span>"  
 
 [ASTPrinter] --------------------------------
 </pre>

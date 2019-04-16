@@ -1,185 +1,106 @@
-#source "Hipoteca.txt"
+#source "testMasIgualEtc.txt"
 call main
 halt
-#line 9
-potencia:
-enter 4
+#line 1
+main:
+enter 8
+#line 5
+pusha BP
+push -2
+add
+pushi 0
+storei
+#line 6
+pusha BP
+push -4
+add
+pushi 2
+storei
+#line 7
+pusha BP
+push -8
+add
+pushf 2.0
+storef
+#line 11
+pusha BP
+push -2
+add
+pusha BP
+push -2
+add
+loadi
+pushi 2
+addi
+storei
 #line 12
 pusha BP
-push 4
+push -2
 add
 loadi
-pushi 0
-eqi
-jz else0
-#line 13
+outi
+pushb 10
+outb
+#line 14
 pusha BP
 push -4
 add
-pushf 1.0
-storef
-jmp finif0
-else0:
+pusha BP
+push -4
+add
+loadi
+pusha BP
+push -4
+add
+loadi
+pushi 2
+muli
+addi
+storei
 #line 15
 pusha BP
-push 4
-add
-loadi
-pushi 0
-lti
-jz else1
-#line 16
-pusha BP
 push -4
 add
-pushf 1.0
+loadi
+outi
+pushb 10
+outb
+#line 17
 pusha BP
-push 6
+push -8
+add
+pusha BP
+push -8
 add
 loadf
-pushi 0
-pusha BP
-push 4
-add
-loadi
-subi
-call potencia
-divf
+pushf 2.0
+mulf
 storef
-jmp finif1
-else1:
 #line 18
 pusha BP
-push -4
-add
-pusha BP
-push 6
+push -8
 add
 loadf
-storef
-#line 19
-while0:
-pusha BP
-push 4
-add
-loadi
-pushi 1
-gti
-jz finWhile0
+outf
+pushb 10
+outb
 #line 20
 pusha BP
-push -4
+push -8
 add
 pusha BP
-push -4
+push -8
 add
 loadf
-pusha BP
-push 6
-add
-loadf
-mulf
+pushf 10.0
+divf
 storef
 #line 21
 pusha BP
-push 4
-add
-pusha BP
-push 4
-add
-loadi
-pushi 1
-subi
-storei
-jmp while0
-finWhile0:
-finif1:
-finif0:
-pusha BP
-push -4
+push -8
 add
 loadf
-ret 4,4,6
-#line 29
-letraHipoteca:
-enter 4
-#line 32
-pusha BP
-push -4
-add
-pusha BP
-push 4
-add
-loadf
-pushf 12.0
-divf
-storef
-pusha BP
-push 10
-add
-loadf
-pusha BP
-push -4
-add
-loadf
-mulf
-pushf 100.0
-pushf 1.0
-pushf 1.0
-pusha BP
-push -4
-add
-loadf
-pushf 100.0
-divf
-addf
-pushi 0
-pusha BP
-push 8
-add
-loadi
-pushi 12
-muli
-subi
-call potencia
-subf
-mulf
-divf
-ret 4,4,10
-#line 37
-main:
-enter 10
-#line 47
-pusha BP
-push -4
-add
-pushf 200000.0
-storef
-#line 48
-pusha BP
-push -6
-add
-pushi 30
-storei
-#line 49
-pusha BP
-push -10
-add
-pushf 2.04
-storef
-#line 51
-pusha BP
-push -4
-add
-loadf
-pusha BP
-push -6
-add
-loadi
-pusha BP
-push -10
-add
-loadf
-call letraHipoteca
 outf
-ret 0, 10, 0
+pushb 10
+outb
+ret 0, 8, 0
