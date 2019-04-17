@@ -208,7 +208,8 @@ public class TypeChecking extends DefaultVisitor {
 		if (node.getRight() != null)
 			node.getRight().accept(this, param);
 
-		predicado(isSimple(node.getLeft().getTipo()), "Deben ser tipos simples", node);
+		predicado(node.getLeft().getTipo() instanceof IntType || node.getLeft().getTipo() instanceof FloatType,
+				"Deben ser tipo entero o real", node);
 		predicado(isIgualTipo(node.getLeft().getTipo(), node.getRight().getTipo()), "Deben de ser del mismo tipo",
 				node);
 		node.setTipo(node.getLeft().getTipo());
