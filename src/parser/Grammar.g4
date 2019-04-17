@@ -44,7 +44,9 @@ sentencia returns[Sentencia ast]
 	| 'while' '(' expr ')' '{' sentencias '}' {$ast = new While($expr.ast, $sentencias.lista);}									
 	| IDENT '(' parametrosOpt ')' ';' { $ast = new LlamadaFuncion($IDENT, $parametrosOpt.lista);}										
 	| 'return' expr ';' { $ast = new Return($expr.ast);}
-	| 'return' ';' { $ast = new Return(null);};
+	| 'return' ';' { $ast = new Return(null);}
+	| op=('++' | '--') expr ';' { $ast = new Asignacion($expr.ast, new ExprAritmetica($expr.ast, $op, $expr.ast));}
+	| expr op=('++' | '--') ';' { $ast = new Asignacion($expr.ast, new ExprAritmetica($expr.ast, $op, $expr.ast));};
 
 parametrosOpt returns[List<Expr> lista = new ArrayList<Expr>()]
 	:(parametroOpt{$lista.add($parametroOpt.ast);}(','parametroOpt{$lista.add($parametroOpt.ast);})*)?;
@@ -68,11 +70,7 @@ expr returns[Expr ast]
 	| expr op=('!=' | '==') expr { $ast = new ExprCondicion($ctx.expr(0), $op, $ctx.expr(1));}
 	| expr '&&' expr { $ast = new ExprLogica($ctx.expr(0), "&&", $ctx.expr(1));}
 	| expr '||' expr { $ast = new ExprLogica($ctx.expr(0), "||", $ctx.expr(1));}
-	| IDENT '(' parametrosOpt ')' { $ast = new LlamFuncExp($IDENT, $parametrosOpt.lista);}
-	| '++' expr
-	| expr '++'
-	| '--' expr
-	| expr '--';
+	| IDENT '(' parametrosOpt ')' { $ast = new LlamFuncExp($IDENT, $parametrosOpt.lista);};
 
 defStruct returns[DefStruct ast]
 		: 'struct' IDENT '{' campos '}' ';'{ $ast = new DefStruct($IDENT,$campos.lista);};

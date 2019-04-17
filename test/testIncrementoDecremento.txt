@@ -1,0 +1,28 @@
+main() {
+  var a: int;
+  var i: float; 
+  var c:char;
+  var v:[3]int;
+  
+  a = 0;
+  i = 0.0;
+  c = 'c';
+  v[0] = 0;
+  
+  ++a;
+  println a;//1
+  a++;
+  println a;//2
+  
+  ++i;
+  println i;//1.0
+  i++;
+  println i;//2.0
+  
+  ++c;//deberia de fallar no se puede aplicar a tipos que no sean enteros o float
+  
+  ++v[0];// no se si deberia fallar o incrementar el elemento de la posicion indicada del array
+  
+  2++;//Ambas deberian de dar error no se puede hacer mas que sobre valores modificables.
+  ++2;
+}
