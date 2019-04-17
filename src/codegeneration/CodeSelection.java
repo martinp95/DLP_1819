@@ -33,6 +33,9 @@ public class CodeSelection extends DefaultVisitor {
 		instruccion.put("!=", "ne");
 		instruccion.put(">=", "ge");
 		instruccion.put("<=", "le");
+
+		instruccion.put("++", "add");
+		instruccion.put("--", "sub");
 	}
 
 	// class Programa { List<Definicion> definicion; }
@@ -138,6 +141,21 @@ public class CodeSelection extends DefaultVisitor {
 		return null;
 	}
 
+	// class IncrementoDecremento { Expr left; String operador; }
+	public Object visit(IncrementoDecremento node, Object param) {
+		out("#line " + node.getEnd().getLine());
+		node.getLeft().accept(this, Funcion.DIRECCION);
+		node.getLeft().accept(this, Funcion.VALOR);		
+		if (node.getLeft().getTipo() instanceof IntType) {
+			out("pushi " + 1);
+		} else if (node.getLeft().getTipo() instanceof FloatType) {
+			out("pushf " + 1);
+		}
+		out(instruccion.get(node.getOperador()) + node.getLeft().getTipo().getSufijo());
+		out("store" + node.getLeft().getTipo().getSufijo());
+		return null;
+	}
+
 	// class If { Expr condicion; List<Sentencia> verdadero; List<Sentencia> falso;
 	// }
 	public Object visit(If node, Object param) {
@@ -152,14 +170,12 @@ public class CodeSelection extends DefaultVisitor {
 		} else {
 			out("jz finif" + contadorIfs);
 		}
-
 		for (int i = 0; i < node.getVerdadero().size(); i++) {
 			node.getVerdadero().get(i).accept(this, param);
 			if (i == node.getVerdadero().size() - 1 && !(node.getVerdadero().get(i) instanceof Return)) {
 				out("jmp finif" + contadorIfs);
 			}
 		}
-
 		if (node.getFalso() != null) {
 			out("else" + contadorIfs + ":");
 			for (Sentencia child : node.getFalso())

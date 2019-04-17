@@ -45,8 +45,8 @@ sentencia returns[Sentencia ast]
 	| IDENT '(' parametrosOpt ')' ';' { $ast = new LlamadaFuncion($IDENT, $parametrosOpt.lista);}										
 	| 'return' expr ';' { $ast = new Return($expr.ast);}
 	| 'return' ';' { $ast = new Return(null);}
-	| op=('++' | '--') expr ';' { $ast = new Asignacion($expr.ast, new ExprAritmetica($expr.ast, $op, $expr.ast));}
-	| expr op=('++' | '--') ';' { $ast = new Asignacion($expr.ast, new ExprAritmetica($expr.ast, $op, $expr.ast));};
+	| op=('++' | '--') expr ';' { $ast = new IncrementoDecremento($expr.ast, $op);}
+	| expr op=('++' | '--') ';' { $ast = new IncrementoDecremento($expr.ast, $op);};
 
 parametrosOpt returns[List<Expr> lista = new ArrayList<Expr>()]
 	:(parametroOpt{$lista.add($parametroOpt.ast);}(','parametroOpt{$lista.add($parametroOpt.ast);})*)?;

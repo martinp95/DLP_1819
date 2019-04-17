@@ -105,6 +105,21 @@ public class TypeChecking extends DefaultVisitor {
 		return null;
 	}
 
+	// class IncrementoDecremento { Expr left; String operador; }
+	public Object visit(IncrementoDecremento node, Object param) {
+
+		// super.visit(node, param);
+
+		if (node.getLeft() != null)
+			node.getLeft().accept(this, param);
+		
+		predicado(node.getLeft().isModificable(), "Valor de la izquierda no modificable", node);
+		predicado(isSimple(node.getLeft().getTipo()), "Valor de la izquierda debe de ser simple", node);
+		predicado(node.getLeft().getTipo() instanceof IntType || node.getLeft().getTipo() instanceof FloatType,
+				"Deben ser tipo entero o real", node);
+		return null;
+	}
+
 	// class If { Expr condicion; List<Sentencia> verdadero; List<Sentencia> falso;
 	// }
 	public Object visit(If node, Object param) {

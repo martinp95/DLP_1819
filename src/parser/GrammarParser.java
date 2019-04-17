@@ -793,7 +793,7 @@ public class GrammarParser extends Parser {
 				((SentenciaContext)_localctx).expr = expr(0);
 				setState(190);
 				match(T__7);
-				 ((SentenciaContext)_localctx).ast =  new Asignacion(((SentenciaContext)_localctx).expr.ast, new ExprAritmetica(((SentenciaContext)_localctx).expr.ast, ((SentenciaContext)_localctx).op, ((SentenciaContext)_localctx).expr.ast));
+				 ((SentenciaContext)_localctx).ast =  new IncrementoDecremento(((SentenciaContext)_localctx).expr.ast, ((SentenciaContext)_localctx).op);
 				}
 				break;
 			case 13:
@@ -814,7 +814,7 @@ public class GrammarParser extends Parser {
 				}
 				setState(195);
 				match(T__7);
-				 ((SentenciaContext)_localctx).ast =  new Asignacion(((SentenciaContext)_localctx).expr.ast, new ExprAritmetica(((SentenciaContext)_localctx).expr.ast, ((SentenciaContext)_localctx).op, ((SentenciaContext)_localctx).expr.ast));
+				 ((SentenciaContext)_localctx).ast =  new IncrementoDecremento(((SentenciaContext)_localctx).expr.ast, ((SentenciaContext)_localctx).op);
 				}
 				break;
 			}

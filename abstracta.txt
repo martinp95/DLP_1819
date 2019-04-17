@@ -25,6 +25,7 @@ if:sentencia -> condicion:expr verdadero:sentencia* falso:sentencia*;
 while:sentencia -> condicion:expr sentencia*;
 llamadaFuncion:sentencia -> nombre:string parametrosOpt:expr*;
 return:sentencia -> retorno:expr;
+incrementoDecremento:sentencia -> left:expr operador:string;
 
 intConstant:expr -> valor:string;
 realConstant:expr -> valor:string;

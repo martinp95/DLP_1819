@@ -137,6 +137,13 @@ public class DefaultVisitor implements Visitor {
 		return null;
 	}
 
+	//	class IncrementoDecremento { Expr left;  String operador; }
+	public Object visit(IncrementoDecremento node, Object param) {
+		if (node.getLeft() != null)
+			node.getLeft().accept(this, param);
+		return null;
+	}
+
 	//	class IntConstant { String valor; }
 	public Object visit(IntConstant node, Object param) {
 		return null;

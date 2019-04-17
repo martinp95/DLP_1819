@@ -242,6 +242,17 @@ public class <nombre clase> extends DefaultVisitor {
 		return null;
 	}
 
+	//	class IncrementoDecremento { Expr left;  String operador; }
+	public Object visit(IncrementoDecremento node, Object param) {
+
+		// super.visit(node, param);
+
+		if (node.getLeft() != null)
+			node.getLeft().accept(this, param);
+
+		return null;
+	}
+
 	//	class IntConstant { String valor; }
 	public Object visit(IntConstant node, Object param) {
 		return null;

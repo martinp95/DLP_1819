@@ -19,10 +19,12 @@ main() {
   i++;
   println i;//2.0
   
-  ++c;//deberia de fallar no se puede aplicar a tipos que no sean enteros o float
+  //++c;//deberia de fallar no se puede aplicar a tipos que no sean enteros o float
   
   ++v[0];// no se si deberia fallar o incrementar el elemento de la posicion indicada del array
-  
-  2++;//Ambas deberian de dar error no se puede hacer mas que sobre valores modificables.
-  ++2;
+  println v[0];
+  v[0]++;
+  println v[0];
+  //2++;//Ambas deberian de dar error no se puede hacer mas que sobre valores modificables.
+  //++2;
 }
