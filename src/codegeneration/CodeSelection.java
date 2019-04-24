@@ -143,11 +143,17 @@ public class CodeSelection extends DefaultVisitor {
 //	class IncrementoDecrementoExpr { Expr valor;  String operador; }
 	public Object visit(IncrementoDecrementoExpr node, Object param) {
 
-		// super.visit(node, param);
-
-		if (node.getValor() != null)
-			node.getValor().accept(this, param);
-
+		out("#line " + node.getEnd().getLine());
+		node.getValor().accept(this, Funcion.DIRECCION);
+		node.getValor().accept(this, Funcion.VALOR);		
+		if (node.getValor().getTipo() instanceof IntType) {
+			out("pushi " + 1);
+		} else if (node.getValor().getTipo() instanceof FloatType) {
+			out("pushf " + 1);
+		}
+		out(instruccion.get(node.getOperador()) + node.getValor().getTipo().getSufijo());
+		out("store" + node.getValor().getTipo().getSufijo());
+		node.getValor().accept(this, Funcion.VALOR);
 		return null;
 	}
 

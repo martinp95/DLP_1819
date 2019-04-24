@@ -14,11 +14,53 @@ storei
 pusha BP
 push -2
 add
+#line 4
+pusha BP
+push -2
+add
+pusha BP
+push -2
+add
+loadi
+pushi 1
+subi
+storei
+pusha BP
+push -2
+add
+loadi
+storei
+#line 5
+#line 5
+pusha BP
+push -2
+add
+pusha BP
+push -2
+add
+loadi
+pushi 1
+addi
+storei
+pusha BP
+push -2
+add
 loadi
 outi
 pushb 10
 outb
-#line 5
+#line 6
+#line 6
+pusha BP
+push -2
+add
+pusha BP
+push -2
+add
+loadi
+pushi 1
+addi
+storei
 pusha BP
 push -2
 add

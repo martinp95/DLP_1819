@@ -1,6 +1,7 @@
 main(){
 	var a:int;
 	a = 0;
+	a = --a;
 	println a++;
 	println ++a;
 }
