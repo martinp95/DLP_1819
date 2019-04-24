@@ -327,6 +327,19 @@ public class TypeChecking extends DefaultVisitor {
 		return null;
 	}
 
+//	class IncrementoDecrementoExpr { Expr valor;  String operador; }
+	public Object visit(IncrementoDecrementoExpr node, Object param) {
+		if (node.getValor() != null)
+			node.getValor().accept(this, param);
+
+		predicado(node.getValor().isModificable(), "El operador solo se puede usar sobre variables", node);
+		predicado(node.getValor().getTipo() instanceof IntType || node.getValor().getTipo() instanceof FloatType,
+				"Solo se puede usar sobre enteros y float", node);
+		node.setTipo(node.getValor().getTipo());
+
+		return null;
+	}
+
 	/**
 	 * predicado. Método auxiliar para implementar los predicados. Borrar si no se
 	 * quiere usar.

@@ -365,4 +365,15 @@ public class <nombre clase> extends DefaultVisitor {
 
 		return null;
 	}
+
+	//	class IncrementoDecrementoExpr { Expr valor;  String operador; }
+	public Object visit(IncrementoDecrementoExpr node, Object param) {
+
+		// super.visit(node, param);
+
+		if (node.getValor() != null)
+			node.getValor().accept(this, param);
+
+		return null;
+	}
 }

@@ -33,6 +33,8 @@ public class CodeSelection extends DefaultVisitor {
 		instruccion.put("!=", "ne");
 		instruccion.put(">=", "ge");
 		instruccion.put("<=", "le");
+		instruccion.put("++", "add");
+		instruccion.put("--", "sub");
 	}
 
 	// class Programa { List<Definicion> definicion; }
@@ -135,6 +137,17 @@ public class CodeSelection extends DefaultVisitor {
 		node.getLeft().accept(this, Funcion.DIRECCION);
 		node.getRight().accept(this, Funcion.VALOR);
 		out("store" + node.getLeft().getTipo().getSufijo());
+		return null;
+	}
+
+//	class IncrementoDecrementoExpr { Expr valor;  String operador; }
+	public Object visit(IncrementoDecrementoExpr node, Object param) {
+
+		// super.visit(node, param);
+
+		if (node.getValor() != null)
+			node.getValor().accept(this, param);
+
 		return null;
 	}
 

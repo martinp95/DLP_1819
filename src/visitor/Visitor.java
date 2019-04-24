@@ -37,4 +37,5 @@ public interface Visitor {
 	public Object visit(Array node, Object param);
 	public Object visit(AccesoStruct node, Object param);
 	public Object visit(LlamFuncExp node, Object param);
+	public Object visit(IncrementoDecrementoExpr node, Object param);
 }

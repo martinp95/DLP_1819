@@ -222,6 +222,13 @@ public class DefaultVisitor implements Visitor {
 		return null;
 	}
 
+	//	class IncrementoDecrementoExpr { Expr valor;  String operador; }
+	public Object visit(IncrementoDecrementoExpr node, Object param) {
+		if (node.getValor() != null)
+			node.getValor().accept(this, param);
+		return null;
+	}
+
     // Método auxiliar -----------------------------
     protected void visitChildren(List<? extends AST> children, Object param) {
         if (children != null)
