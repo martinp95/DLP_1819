@@ -1030,7 +1030,7 @@ public class GrammarParser extends Parser {
 				}
 				setState(240);
 				((ExprContext)_localctx).expr = expr(2);
-				 ((ExprContext)_localctx).ast =  new IncrementoDecrementoExpr(_localctx.expr(0), ((ExprContext)_localctx).op);
+				 ((ExprContext)_localctx).ast =  new IncrementoDecrementoExpr(_localctx.expr(0), ((ExprContext)_localctx).op, "prefijo");
 				}
 				break;
 			}
@@ -1205,7 +1205,7 @@ public class GrammarParser extends Parser {
 							_errHandler.reportMatch(this);
 							consume();
 						}
-						 ((ExprContext)_localctx).ast =  new IncrementoDecrementoExpr(_localctx.expr(0), ((ExprContext)_localctx).op);
+						 ((ExprContext)_localctx).ast =  new IncrementoDecrementoExpr(_localctx.expr(0), ((ExprContext)_localctx).op, "sufijo");
 						}
 						break;
 					}

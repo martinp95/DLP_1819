@@ -222,7 +222,7 @@ public class DefaultVisitor implements Visitor {
 		return null;
 	}
 
-	//	class IncrementoDecrementoExpr { Expr valor;  String operador; }
+	//	class IncrementoDecrementoExpr { Expr valor;  String operador;  String prefijo; }
 	public Object visit(IncrementoDecrementoExpr node, Object param) {
 		if (node.getValor() != null)
 			node.getValor().accept(this, param);

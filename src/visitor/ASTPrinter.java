@@ -407,7 +407,7 @@ public class ASTPrinter extends DefaultVisitor {
 		return null;
 	}
 
-	//	class IncrementoDecrementoExpr { Expr valor;  String operador; }
+	//	class IncrementoDecrementoExpr { Expr valor;  String operador;  String prefijo; }
 	public Object visit(IncrementoDecrementoExpr node, Object param) {
 		int indent = ((Integer)param).intValue();
 
@@ -415,6 +415,7 @@ public class ASTPrinter extends DefaultVisitor {
 
 		visit(indent + 1, "valor", "Expr",node.getValor());
 		print(indent + 1, "operador", "String", node.getOperador());
+		print(indent + 1, "prefijo", "String", node.getPrefijo());
 		return null;
 	}
 

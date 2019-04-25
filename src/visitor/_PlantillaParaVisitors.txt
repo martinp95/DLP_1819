@@ -366,7 +366,7 @@ public class <nombre clase> extends DefaultVisitor {
 		return null;
 	}
 
-	//	class IncrementoDecrementoExpr { Expr valor;  String operador; }
+	//	class IncrementoDecrementoExpr { Expr valor;  String operador;  String prefijo; }
 	public Object visit(IncrementoDecrementoExpr node, Object param) {
 
 		// super.visit(node, param);

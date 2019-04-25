@@ -69,8 +69,8 @@ expr returns[Expr ast]
 	| expr '&&' expr { $ast = new ExprLogica($ctx.expr(0), "&&", $ctx.expr(1));}
 	| expr '||' expr { $ast = new ExprLogica($ctx.expr(0), "||", $ctx.expr(1));}
 	| IDENT '(' parametrosOpt ')' { $ast = new LlamFuncExp($IDENT, $parametrosOpt.lista);}
-	| op=('++' | '--') expr { $ast = new IncrementoDecrementoExpr($ctx.expr(0), $op);}
-	| expr op=('++' | '--') { $ast = new IncrementoDecrementoExpr($ctx.expr(0), $op);};
+	| op=('++' | '--') expr { $ast = new IncrementoDecrementoExpr($ctx.expr(0), $op, "prefijo");}
+	| expr op=('++' | '--') { $ast = new IncrementoDecrementoExpr($ctx.expr(0), $op, "sufijo");};
 
 defStruct returns[DefStruct ast]
 		: 'struct' IDENT '{' campos '}' ';'{ $ast = new DefStruct($IDENT,$campos.lista);};

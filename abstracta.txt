@@ -38,4 +38,4 @@ not:expr -> valor:expr;
 array:expr-> nombre:expr valor:expr;
 accesoStruct:expr -> nombre:expr acceso:string;
 llamFuncExp:expr -> nombre:string parametrosOpt:expr*;
-incrementoDecrementoExpr:expr -> valor:expr operador:string;
+incrementoDecrementoExpr:expr -> valor:expr operador:string prefijo:string;
