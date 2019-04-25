@@ -140,20 +140,34 @@ public class CodeSelection extends DefaultVisitor {
 		return null;
 	}
 
-//	class IncrementoDecrementoExpr { Expr valor;  String operador; }
+	// class IncrementoDecrementoExpr { Expr valor; String operador; String prefijo;
+	// }
 	public Object visit(IncrementoDecrementoExpr node, Object param) {
 
 		out("#line " + node.getEnd().getLine());
-		node.getValor().accept(this, Funcion.DIRECCION);
-		node.getValor().accept(this, Funcion.VALOR);		
-		if (node.getValor().getTipo() instanceof IntType) {
-			out("pushi " + 1);
-		} else if (node.getValor().getTipo() instanceof FloatType) {
-			out("pushf " + 1);
-		}
-		out(instruccion.get(node.getOperador()) + node.getValor().getTipo().getSufijo());
-		out("store" + node.getValor().getTipo().getSufijo());
-		node.getValor().accept(this, Funcion.VALOR);
+		if (node.getPrefijo().equals("prefijo")) {
+			node.getValor().accept(this, Funcion.DIRECCION);
+			node.getValor().accept(this, Funcion.VALOR);
+			if (node.getValor().getTipo() instanceof IntType) {
+				out("pushi " + 1);
+			} else if (node.getValor().getTipo() instanceof FloatType) {
+				out("pushf " + 1);
+			}
+			out(instruccion.get(node.getOperador()) + node.getValor().getTipo().getSufijo());
+			out("store" + node.getValor().getTipo().getSufijo());
+			node.getValor().accept(this, Funcion.VALOR);
+		}else if(node.getPrefijo().equals("sufijo")) {
+			node.getValor().accept(this, Funcion.VALOR);
+			node.getValor().accept(this, Funcion.DIRECCION);
+			node.getValor().accept(this, Funcion.VALOR);
+			if (node.getValor().getTipo() instanceof IntType) {
+				out("pushi " + 1);
+			} else if (node.getValor().getTipo() instanceof FloatType) {
+				out("pushf " + 1);
+			}
+			out(instruccion.get(node.getOperador()) + node.getValor().getTipo().getSufijo());
+			out("store" + node.getValor().getTipo().getSufijo());
+		}		
 		return null;
 	}
 

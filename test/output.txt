@@ -3,18 +3,18 @@ call main
 halt
 #line 1
 main:
-enter 2
-#line 3
+enter 4
+#line 4
 pusha BP
 push -2
 add
 pushi 0
 storei
-#line 4
+#line 5
 pusha BP
-push -2
+push -4
 add
-#line 4
+#line 5
 pusha BP
 push -2
 add
@@ -30,8 +30,21 @@ push -2
 add
 loadi
 storei
-#line 5
-#line 5
+#line 6
+pusha BP
+push -4
+add
+pushi 0
+storei
+#line 7
+pusha BP
+push -4
+add
+#line 7
+pusha BP
+push -2
+add
+loadi
 pusha BP
 push -2
 add
@@ -42,25 +55,16 @@ loadi
 pushi 1
 addi
 storei
-pusha BP
-push -2
-add
-loadi
-outi
-pushb 10
-outb
-#line 6
-#line 6
-pusha BP
-push -2
-add
-pusha BP
-push -2
-add
-loadi
-pushi 1
-addi
 storei
+#line 8
+pusha BP
+push -4
+add
+loadi
+outi
+pushb 10
+outb
+#line 9
 pusha BP
 push -2
 add
@@ -68,4 +72,4 @@ loadi
 outi
 pushb 10
 outb
-ret 0, 2, 0
+ret 0, 4, 0

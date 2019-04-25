@@ -1,7 +1,13 @@
 main(){
 	var a:int;
+	var b:int;
 	a = 0;
-	a = --a;
-	println a++;
-	println ++a;
+	b = --a; // b = -1 a = -1
+	b = 0;
+	b = a++; // b = -1 a = 0
+	println b;
+	println a;
+	
+	//añadir mas pruebas tanto con if como while y
+	// demas donde pueda meter la expresion y ver que efectivamente funciona de manera correcta
 }

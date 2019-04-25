@@ -22,9 +22,9 @@
 <body><pre>
 [ASTPrinter] -------------------------------- line:col  line:col
 
-<span class="dots"></span>Programa &rarr;                                                  <span class="pos">1:1  6:12    </span><span class="sourceText"></span><span class="posText">main(){</span><span class="sourceText"> ... </span><span class="posText">println ++a</span><span class="sourceText">;</span>
+<span class="dots"></span>Programa &rarr;                                                  <span class="pos">1:1  9:10    </span><span class="sourceText"></span><span class="posText">main(){</span><span class="sourceText"> ... </span><span class="posText">println a</span><span class="sourceText">;</span>
 <span class="dots">.  </span>definicion  <span class="type">List&lt;Definicion&gt;</span> = 
-<span class="dots">.  .  </span>DefFuncion &rarr;                                          <span class="pos">1:1  6:12    </span><span class="sourceText"></span><span class="posText">main(){</span><span class="sourceText"> ... </span><span class="posText">println ++a</span><span class="sourceText">;</span>
+<span class="dots">.  .  </span>DefFuncion &rarr;                                          <span class="pos">1:1  9:10    </span><span class="sourceText"></span><span class="posText">main(){</span><span class="sourceText"> ... </span><span class="posText">println a</span><span class="sourceText">;</span>
 <span class="dots">.  .  |  </span>"<span class="value">main</span>"  
 <span class="dots">.  .  |  </span>parametro  <span class="type">List&lt;Parametro&gt;</span> = 
 <span class="dots">.  .  |  </span><span class="null">null</span>  tipo:<span class="type">Tipo</span>
@@ -33,24 +33,34 @@
 <span class="dots">.  .  |  .  |  </span>"<span class="value">a</span>"  
 <span class="dots">.  .  |  .  |  </span><span class="value">IntType</span> &rarr;                                    <span class="pos"><span class="null">null</span>  <span class="null">null</span>   </span>
 <span class="dots">.  .  |  .  |  </span>"<span class="value">local</span>"  
+<span class="dots">.  .  |  .  </span>DefVariable &rarr;                                   <span class="pos">3:6  3:6     </span><span class="sourceText">var </span><span class="posText">b</span><span class="sourceText">:int;</span>
+<span class="dots">.  .  |  .  |  </span>"<span class="value">b</span>"  
+<span class="dots">.  .  |  .  |  </span><span class="value">IntType</span> &rarr;                                    <span class="pos"><span class="null">null</span>  <span class="null">null</span>   </span>
+<span class="dots">.  .  |  .  |  </span>"<span class="value">local</span>"  
 <span class="dots">.  .  |  </span>sentencia  <span class="type">List&lt;Sentencia&gt;</span> = 
-<span class="dots">.  .  |  .  </span>Asignacion &rarr;                                    <span class="pos">3:2  3:6     </span><span class="sourceText"></span><span class="posText">a = 0</span><span class="sourceText">;</span>
-<span class="dots">.  .  |  .  |  </span>"a"  <span class="type">IdentConstant.valor</span>                     <span class="pos">3:2  3:2     </span><span class="sourceText"></span><span class="posText">a</span><span class="sourceText"> = 0;</span>
-<span class="dots">.  .  |  .  |  </span>"0"  <span class="type">IntConstant.valor</span>                       <span class="pos">3:6  3:6     </span><span class="sourceText">a = </span><span class="posText">0</span><span class="sourceText">;</span>
-<span class="dots">.  .  |  .  </span>Asignacion &rarr;                                    <span class="pos">4:2  4:8     </span><span class="sourceText"></span><span class="posText">a = --a</span><span class="sourceText">;</span>
-<span class="dots">.  .  |  .  |  </span>"a"  <span class="type">IdentConstant.valor</span>                     <span class="pos">4:2  4:2     </span><span class="sourceText"></span><span class="posText">a</span><span class="sourceText"> = --a;</span>
-<span class="dots">.  .  |  .  |  </span>IncrementoDecrementoExpr &rarr;                   <span class="pos">4:6  4:8     </span><span class="sourceText">a = </span><span class="posText">--a</span><span class="sourceText">;</span>
-<span class="dots">.  .  |  .  |  .  </span>"a"  <span class="type">IdentConstant.valor</span>                  <span class="pos">4:8  4:8     </span><span class="sourceText">a = --</span><span class="posText">a</span><span class="sourceText">;</span>
+<span class="dots">.  .  |  .  </span>Asignacion &rarr;                                    <span class="pos">4:2  4:6     </span><span class="sourceText"></span><span class="posText">a = 0</span><span class="sourceText">;</span>
+<span class="dots">.  .  |  .  |  </span>"a"  <span class="type">IdentConstant.valor</span>                     <span class="pos">4:2  4:2     </span><span class="sourceText"></span><span class="posText">a</span><span class="sourceText"> = 0;</span>
+<span class="dots">.  .  |  .  |  </span>"0"  <span class="type">IntConstant.valor</span>                       <span class="pos">4:6  4:6     </span><span class="sourceText">a = </span><span class="posText">0</span><span class="sourceText">;</span>
+<span class="dots">.  .  |  .  </span>Asignacion &rarr;                                    <span class="pos">5:2  5:8     </span><span class="sourceText"></span><span class="posText">b = --a</span><span class="sourceText">; // b = -1 a = -1</span>
+<span class="dots">.  .  |  .  |  </span>"b"  <span class="type">IdentConstant.valor</span>                     <span class="pos">5:2  5:2     </span><span class="sourceText"></span><span class="posText">b</span><span class="sourceText"> = --a; // b = -1 a = -1</span>
+<span class="dots">.  .  |  .  |  </span>IncrementoDecrementoExpr &rarr;                   <span class="pos">5:6  5:8     </span><span class="sourceText">b = </span><span class="posText">--a</span><span class="sourceText">; // b = -1 a = -1</span>
+<span class="dots">.  .  |  .  |  .  </span>"a"  <span class="type">IdentConstant.valor</span>                  <span class="pos">5:8  5:8     </span><span class="sourceText">b = --</span><span class="posText">a</span><span class="sourceText">; // b = -1 a = -1</span>
 <span class="dots">.  .  |  .  |  .  </span>"<span class="value">--</span>"  
-<span class="dots">.  .  |  .  </span>Print &rarr;                                         <span class="pos">5:10  5:12   </span><span class="sourceText">println </span><span class="posText">a++</span><span class="sourceText">;</span>
-<span class="dots">.  .  |  .  |  </span>IncrementoDecrementoExpr &rarr;                   <span class="pos">5:10  5:12   </span><span class="sourceText">println </span><span class="posText">a++</span><span class="sourceText">;</span>
-<span class="dots">.  .  |  .  |  .  </span>"a"  <span class="type">IdentConstant.valor</span>                  <span class="pos">5:10  5:10   </span><span class="sourceText">println </span><span class="posText">a</span><span class="sourceText">++;</span>
+<span class="dots">.  .  |  .  |  .  </span>"<span class="value">prefijo</span>"  
+<span class="dots">.  .  |  .  </span>Asignacion &rarr;                                    <span class="pos">6:2  6:6     </span><span class="sourceText"></span><span class="posText">b = 0</span><span class="sourceText">;</span>
+<span class="dots">.  .  |  .  |  </span>"b"  <span class="type">IdentConstant.valor</span>                     <span class="pos">6:2  6:2     </span><span class="sourceText"></span><span class="posText">b</span><span class="sourceText"> = 0;</span>
+<span class="dots">.  .  |  .  |  </span>"0"  <span class="type">IntConstant.valor</span>                       <span class="pos">6:6  6:6     </span><span class="sourceText">b = </span><span class="posText">0</span><span class="sourceText">;</span>
+<span class="dots">.  .  |  .  </span>Asignacion &rarr;                                    <span class="pos">7:2  7:8     </span><span class="sourceText"></span><span class="posText">b = a++</span><span class="sourceText">; // b = -1 a = 0</span>
+<span class="dots">.  .  |  .  |  </span>"b"  <span class="type">IdentConstant.valor</span>                     <span class="pos">7:2  7:2     </span><span class="sourceText"></span><span class="posText">b</span><span class="sourceText"> = a++; // b = -1 a = 0</span>
+<span class="dots">.  .  |  .  |  </span>IncrementoDecrementoExpr &rarr;                   <span class="pos">7:6  7:8     </span><span class="sourceText">b = </span><span class="posText">a++</span><span class="sourceText">; // b = -1 a = 0</span>
+<span class="dots">.  .  |  .  |  .  </span>"a"  <span class="type">IdentConstant.valor</span>                  <span class="pos">7:6  7:6     </span><span class="sourceText">b = </span><span class="posText">a</span><span class="sourceText">++; // b = -1 a = 0</span>
 <span class="dots">.  .  |  .  |  .  </span>"<span class="value">++</span>"  
+<span class="dots">.  .  |  .  |  .  </span>"<span class="value">sufijo</span>"  
+<span class="dots">.  .  |  .  </span>Print &rarr;                                         <span class="pos">8:10  8:10   </span><span class="sourceText">println </span><span class="posText">b</span><span class="sourceText">;</span>
+<span class="dots">.  .  |  .  |  </span>"b"  <span class="type">IdentConstant.valor</span>                     <span class="pos">8:10  8:10   </span><span class="sourceText">println </span><span class="posText">b</span><span class="sourceText">;</span>
 <span class="dots">.  .  |  .  |  </span>"<span class="value">ln</span>"  
-<span class="dots">.  .  |  .  </span>Print &rarr;                                         <span class="pos">6:10  6:12   </span><span class="sourceText">println </span><span class="posText">++a</span><span class="sourceText">;</span>
-<span class="dots">.  .  |  .  |  </span>IncrementoDecrementoExpr &rarr;                   <span class="pos">6:10  6:12   </span><span class="sourceText">println </span><span class="posText">++a</span><span class="sourceText">;</span>
-<span class="dots">.  .  |  .  |  .  </span>"a"  <span class="type">IdentConstant.valor</span>                  <span class="pos">6:12  6:12   </span><span class="sourceText">println ++</span><span class="posText">a</span><span class="sourceText">;</span>
-<span class="dots">.  .  |  .  |  .  </span>"<span class="value">++</span>"  
+<span class="dots">.  .  |  .  </span>Print &rarr;                                         <span class="pos">9:10  9:10   </span><span class="sourceText">println </span><span class="posText">a</span><span class="sourceText">;</span>
+<span class="dots">.  .  |  .  |  </span>"a"  <span class="type">IdentConstant.valor</span>                     <span class="pos">9:10  9:10   </span><span class="sourceText">println </span><span class="posText">a</span><span class="sourceText">;</span>
 <span class="dots">.  .  |  .  |  </span>"<span class="value">ln</span>"  
 
 [ASTPrinter] --------------------------------
