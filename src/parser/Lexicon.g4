@@ -9,7 +9,7 @@ REAL_CONSTANT
 	: [0-9]+'.'[0-9]+;
 	
 CHAR_CONSTANT
-	: '\''.'\''|'\\n';
+	: '\'' (.|'\\n')'\'';
 
 LINE_COMMENT
 	:'//' .*? '\n'	-> skip;
