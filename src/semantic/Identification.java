@@ -91,6 +91,7 @@ public class Identification extends DefaultVisitor {
 	public Object visit(Parametro node, Object param) {
 		DefVariable variable = new DefVariable(node.getNombre(), node.getTipo(), "param");
 		variable.setParametro(node);
+		variable.setReferencia(true);
 		predicado(variables.getFromTop(variable.getNombre()) == null, "parametro repetido: " + variable.getNombre(),
 				node);
 		variables.put(variable.getNombre(), variable);

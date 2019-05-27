@@ -77,7 +77,7 @@ public class DefaultVisitor implements Visitor {
 		return null;
 	}
 
-	//	class Parametro { String nombre;  Tipo tipo; }
+	//	class Parametro { String nombre;  Tipo tipo;  boolean referencia; }
 	public Object visit(Parametro node, Object param) {
 		if (node.getTipo() != null)
 			node.getTipo().accept(this, param);

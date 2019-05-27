@@ -113,7 +113,6 @@ public class ASTPrinter extends DefaultVisitor {
 		print(indent + 1, "nombre", "String", node.getNombre());
 		visit(indent + 1, "tipo", "Tipo",node.getTipo());
 		print(indent + 1, "ambito", "String", node.getAmbito());
-		print(indent + 1, "direccion", node.getTipo().toString(), node.getDireccion());
 		return null;
 	}
 
@@ -196,11 +195,10 @@ public class ASTPrinter extends DefaultVisitor {
 
 		print(indent + 1, "nombre", "String", node.getNombre());
 		visit(indent + 1, "tipo", "Tipo",node.getTipo());
-		print(indent + 1, "direccion", node.getTipo().toString(), node.getDireccion());
 		return null;
 	}
 
-	//	class Parametro { String nombre;  Tipo tipo; }
+	//	class Parametro { String nombre;  Tipo tipo;  boolean referencia; }
 	public Object visit(Parametro node, Object param) {
 		int indent = ((Integer)param).intValue();
 
@@ -208,7 +206,7 @@ public class ASTPrinter extends DefaultVisitor {
 
 		print(indent + 1, "nombre", "String", node.getNombre());
 		visit(indent + 1, "tipo", "Tipo",node.getTipo());
-		print(indent + 1, "direccion", node.getTipo().toString(), node.getDireccion());
+		print(indent + 1, "referencia", "boolean", node.getReferencia());
 		return null;
 	}
 
@@ -426,7 +424,6 @@ public class ASTPrinter extends DefaultVisitor {
 		write(indent, formatValue(value) + "  " + typeTag(type));
 	}
 
-	@SuppressWarnings("unused")
 	private void print(int indent, String attName, String type, List<? extends Object> children) {
 		write(indent, attName + "  " + typeTag(type) + " = ");
 		if (children != null)
@@ -541,7 +538,6 @@ public class ASTPrinter extends DefaultVisitor {
 				+ "</span><span class=\"sourceText\">" + beforeText + "</span>";
 	}
 
-	@SuppressWarnings("unused")
 	private static List<String> loadLines(String sourceFile, int tabWidth) {
 		if (sourceFile == null)
 			return null;

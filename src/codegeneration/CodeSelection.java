@@ -185,8 +185,16 @@ public class CodeSelection extends DefaultVisitor {
 
 	// class LlamadaFuncion { String nombre; List<Expr> parametrosOpt; }
 	public Object visit(LlamadaFuncion node, Object param) {
-		if (node.getParametrosOpt() != null)
-			visitChildren(node.getParametrosOpt(), Funcion.VALOR);
+		if (node.getParametrosOpt() != null) {
+			// visitChildren(node.getParametrosOpt(), Funcion.VALOR);
+			for (int i = 0; i < node.getDefinicion().getParametro().size(); i++) {
+				if (node.getDefinicion().getParametro().get(i).getReferencia()) {
+					node.getParametrosOpt().get(i).accept(this, Funcion.DIRECCION);
+				} else {
+					node.getParametrosOpt().get(i).accept(this, Funcion.VALOR);
+				}
+			}
+		}
 		out("call " + node.getNombre());
 		if (node.getDefinicion().getTipo() != null)
 			out("pop");
@@ -242,6 +250,9 @@ public class CodeSelection extends DefaultVisitor {
 				out("pusha BP");
 				out("push " + node.getDefinicion().getParametro().getDireccion());
 				out("add");
+				if (node.getDefinicion().isReferencia()) {
+					out("load" + node.getDefinicion().getTipo().getSufijo());
+				}
 			} else if (node.getDefinicion().getAmbito().equals("local")) {
 				out("pusha BP");
 				out("push " + node.getDefinicion().getDireccion());
@@ -330,8 +341,16 @@ public class CodeSelection extends DefaultVisitor {
 
 	// class LlamFuncExp { String nombre; List<Expr> parametrosOpt; }
 	public Object visit(LlamFuncExp node, Object param) {
-		if (node.getParametrosOpt() != null)
-			visitChildren(node.getParametrosOpt(), Funcion.VALOR);
+		if (node.getParametrosOpt() != null) {
+			// visitChildren(node.getParametrosOpt(), Funcion.VALOR);
+			for (int i = 0; i < node.getDefinicion().getParametro().size(); i++) {
+				if (node.getDefinicion().getParametro().get(i).getReferencia()) {
+					node.getParametrosOpt().get(i).accept(this, Funcion.DIRECCION);
+				} else {
+					node.getParametrosOpt().get(i).accept(this, Funcion.VALOR);
+				}
+			}
+		}
 		out("call " + node.getNombre());
 		return null;
 	}

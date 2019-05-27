@@ -25,7 +25,8 @@ parametros returns[List<Parametro> lista = new ArrayList<Parametro>()]
 	:(parametro{$lista.add($parametro.ast);}(','parametro{$lista.add($parametro.ast);})*)?;
 			
 parametro returns[Parametro ast]
-	: IDENT ':' tipo {$ast = new Parametro($IDENT, $tipo.ast);};
+	: IDENT ':' tipo {$ast = new Parametro($IDENT, $tipo.ast, false);}
+	| IDENT ':' tipo '&' {$ast = new Parametro($IDENT, $tipo.ast, true);};
 				
 variables returns[List<DefVariable> lista = new ArrayList<DefVariable>()]
 			:(defVariable { $defVariable.ast.setAmbito("local");$lista.add($defVariable.ast);})*;

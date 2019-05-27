@@ -1,0 +1,15 @@
+f(a:int &) {
+	a = 10;
+}
+
+main() {
+	var x:int;
+	var a:[5]int;
+	x = 0;
+	f(x);
+	print x; // Imprime 10
+	
+	//f(1); // Error, 1 no es lvalue
+	f(a[1]);
+	print a[1]; // Imprime 10
+}

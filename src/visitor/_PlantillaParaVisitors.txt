@@ -138,7 +138,7 @@ public class <nombre clase> extends DefaultVisitor {
 		return null;
 	}
 
-	//	class Parametro { String nombre;  Tipo tipo; }
+	//	class Parametro { String nombre;  Tipo tipo;  boolean referencia; }
 	public Object visit(Parametro node, Object param) {
 
 		// super.visit(node, param);

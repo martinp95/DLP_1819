@@ -16,7 +16,7 @@ arrayType:tipo -> posicion:string tipo:tipo;
 
 campo -> nombre:string tipo;
 
-parametro -> nombre:string tipo;
+parametro -> nombre:string tipo referencia:boolean;
 
 print:sentencia -> imprime:expr tipoPrint:string;
 read:sentencia -> leer:expr;
