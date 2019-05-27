@@ -33,6 +33,7 @@ public interface Visitor {
 	public Object visit(ExprAritmetica node, Object param);
 	public Object visit(ExprLogica node, Object param);
 	public Object visit(ExprCondicion node, Object param);
+	public Object visit(OperadorBinarioLogico node, Object param);
 	public Object visit(Not node, Object param);
 	public Object visit(Array node, Object param);
 	public Object visit(AccesoStruct node, Object param);

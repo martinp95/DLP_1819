@@ -280,6 +280,21 @@ public class CodeSelection extends DefaultVisitor {
 		return null;
 	}
 
+//	class OperadorBinarioLogico { Expr left;  Expr right; }
+	public Object visit(OperadorBinarioLogico node, Object param) {
+		node.getLeft().accept(this, Funcion.VALOR);
+		node.getRight().accept(this, Funcion.VALOR);
+		out("not");
+		out(instruccion.get("&&"));
+		node.getLeft().accept(this, Funcion.VALOR);
+		out("not");
+		node.getRight().accept(this, Funcion.VALOR);
+		out(instruccion.get("&&"));
+		out(instruccion.get("||"));
+
+		return null;
+	}
+
 	// class ExprCondicion { Expr left; String operador; Expr right; }
 	public Object visit(ExprCondicion node, Object param) {
 		node.getLeft().accept(this, param);

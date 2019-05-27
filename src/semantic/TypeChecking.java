@@ -236,6 +236,24 @@ public class TypeChecking extends DefaultVisitor {
 		return null;
 	}
 
+	// class OperadorBinarioLogico { Expr left; Expr right; }
+	public Object visit(OperadorBinarioLogico node, Object param) {
+		// super.visit(node, param);
+		if (node.getLeft() != null)
+			node.getLeft().accept(this, param);
+		if (node.getRight() != null)
+			node.getRight().accept(this, param);
+
+		predicado(
+				(node.getLeft().getTipo() instanceof IntType)
+						&& isIgualTipo(node.getLeft().getTipo(), node.getRight().getTipo()),
+				"Deben ser de tipo entero", node);
+		node.setTipo(new IntType());
+		node.setModificable(false);
+
+		return null;
+	}
+
 	// class ExprCondicion { Expr left; String operador; Expr right; }
 	public Object visit(ExprCondicion node, Object param) {
 		// super.visit(node, param);

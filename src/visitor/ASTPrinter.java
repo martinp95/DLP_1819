@@ -113,7 +113,6 @@ public class ASTPrinter extends DefaultVisitor {
 		print(indent + 1, "nombre", "String", node.getNombre());
 		visit(indent + 1, "tipo", "Tipo",node.getTipo());
 		print(indent + 1, "ambito", "String", node.getAmbito());
-		print(indent + 1, "direccion", node.getTipo().toString(), node.getDireccion());
 		return null;
 	}
 
@@ -196,7 +195,6 @@ public class ASTPrinter extends DefaultVisitor {
 
 		print(indent + 1, "nombre", "String", node.getNombre());
 		visit(indent + 1, "tipo", "Tipo",node.getTipo());
-		print(indent + 1, "direccion", node.getTipo().toString(), node.getDireccion());
 		return null;
 	}
 
@@ -208,7 +206,6 @@ public class ASTPrinter extends DefaultVisitor {
 
 		print(indent + 1, "nombre", "String", node.getNombre());
 		visit(indent + 1, "tipo", "Tipo",node.getTipo());
-		print(indent + 1, "direccion", node.getTipo().toString(), node.getDireccion());
 		return null;
 	}
 
@@ -367,6 +364,17 @@ public class ASTPrinter extends DefaultVisitor {
 		return null;
 	}
 
+	//	class OperadorBinarioLogico { Expr left;  Expr right; }
+	public Object visit(OperadorBinarioLogico node, Object param) {
+		int indent = ((Integer)param).intValue();
+
+		printName(indent, "OperadorBinarioLogico", node, false);
+
+		visit(indent + 1, "left", "Expr",node.getLeft());
+		visit(indent + 1, "right", "Expr",node.getRight());
+		return null;
+	}
+
 	//	class Not { Expr valor; }
 	public Object visit(Not node, Object param) {
 		int indent = ((Integer)param).intValue();
@@ -426,7 +434,6 @@ public class ASTPrinter extends DefaultVisitor {
 		write(indent, formatValue(value) + "  " + typeTag(type));
 	}
 
-	@SuppressWarnings("unused")
 	private void print(int indent, String attName, String type, List<? extends Object> children) {
 		write(indent, attName + "  " + typeTag(type) + " = ");
 		if (children != null)
@@ -541,7 +548,6 @@ public class ASTPrinter extends DefaultVisitor {
 				+ "</span><span class=\"sourceText\">" + beforeText + "</span>";
 	}
 
-	@SuppressWarnings("unused")
 	private static List<String> loadLines(String sourceFile, int tabWidth) {
 		if (sourceFile == null)
 			return null;

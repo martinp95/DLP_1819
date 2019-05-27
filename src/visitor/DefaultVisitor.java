@@ -193,6 +193,15 @@ public class DefaultVisitor implements Visitor {
 		return null;
 	}
 
+	//	class OperadorBinarioLogico { Expr left;  Expr right; }
+	public Object visit(OperadorBinarioLogico node, Object param) {
+		if (node.getLeft() != null)
+			node.getLeft().accept(this, param);
+		if (node.getRight() != null)
+			node.getRight().accept(this, param);
+		return null;
+	}
+
 	//	class Not { Expr valor; }
 	public Object visit(Not node, Object param) {
 		if (node.getValor() != null)
