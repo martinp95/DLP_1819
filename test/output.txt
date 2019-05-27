@@ -103,4 +103,26 @@ loadf
 outf
 pushb 10
 outb
+#line 23
+pusha BP
+push -2
+add
+pusha BP
+push -2
+add
+loadi
+pusha BP
+push -4
+add
+loadi
+and
+storei
+#line 24
+pusha BP
+push -2
+add
+loadi
+outi
+pushb 10
+outb
 ret 0, 8, 0

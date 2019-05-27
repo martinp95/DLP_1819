@@ -19,4 +19,7 @@ main() {
 	
 	local3 /= 10.0;
 	println(local3);
+	
+	local &&= local2;
+	println(local);
 }

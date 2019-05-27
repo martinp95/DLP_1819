@@ -22,9 +22,9 @@
 <body><pre>
 [ASTPrinter] -------------------------------- line:col  line:col
 
-<span class="dots"></span>Programa &rarr;                                                  <span class="pos">1:1  21:15   </span><span class="sourceText"></span><span class="posText">main() {</span><span class="sourceText"> ... </span><span class="posText">println(local3</span><span class="sourceText">);</span>
+<span class="dots"></span>Programa &rarr;                                                  <span class="pos">1:1  24:14   </span><span class="sourceText"></span><span class="posText">main() {</span><span class="sourceText"> ... </span><span class="posText">println(local</span><span class="sourceText">);</span>
 <span class="dots">.  </span>definicion  <span class="type">List&lt;Definicion&gt;</span> = 
-<span class="dots">.  .  </span>DefFuncion &rarr;                                          <span class="pos">1:1  21:15   </span><span class="sourceText"></span><span class="posText">main() {</span><span class="sourceText"> ... </span><span class="posText">println(local3</span><span class="sourceText">);</span>
+<span class="dots">.  .  </span>DefFuncion &rarr;                                          <span class="pos">1:1  24:14   </span><span class="sourceText"></span><span class="posText">main() {</span><span class="sourceText"> ... </span><span class="posText">println(local</span><span class="sourceText">);</span>
 <span class="dots">.  .  |  </span>"<span class="value">main</span>"  
 <span class="dots">.  .  |  </span>parametro  <span class="type">List&lt;Parametro&gt;</span> = 
 <span class="dots">.  .  |  </span><span class="null">null</span>  tipo:<span class="type">Tipo</span>
@@ -92,6 +92,15 @@
 <span class="dots">.  .  |  .  |  .  </span>"10.0"  <span class="type">RealConstant.valor</span>                <span class="pos">20:12  20:15 </span><span class="sourceText">local3 /= </span><span class="posText">10.0</span><span class="sourceText">;</span>
 <span class="dots">.  .  |  .  </span>Print &rarr;                                         <span class="pos">21:10  21:15 </span><span class="sourceText">println(</span><span class="posText">local3</span><span class="sourceText">);</span>
 <span class="dots">.  .  |  .  |  </span>"local3"  <span class="type">IdentConstant.valor</span>                <span class="pos">21:10  21:15 </span><span class="sourceText">println(</span><span class="posText">local3</span><span class="sourceText">);</span>
+<span class="dots">.  .  |  .  |  </span>"<span class="value">ln</span>"  
+<span class="dots">.  .  |  .  </span>Asignacion &rarr;                                    <span class="pos">23:2  23:17  </span><span class="sourceText"></span><span class="posText">local &&= local2</span><span class="sourceText">;</span>
+<span class="dots">.  .  |  .  |  </span>"local"  <span class="type">IdentConstant.valor</span>                 <span class="pos">23:2  23:6   </span><span class="sourceText"></span><span class="posText">local</span><span class="sourceText"> &&= local2;</span>
+<span class="dots">.  .  |  .  |  </span>ExprLogica &rarr;                                 <span class="pos">23:2  23:17  </span><span class="sourceText"></span><span class="posText">local &&= local2</span><span class="sourceText">;</span>
+<span class="dots">.  .  |  .  |  .  </span>"local"  <span class="type">IdentConstant.valor</span>              <span class="pos">23:2  23:6   </span><span class="sourceText"></span><span class="posText">local</span><span class="sourceText"> &&= local2;</span>
+<span class="dots">.  .  |  .  |  .  </span>"<span class="value">&&</span>"  
+<span class="dots">.  .  |  .  |  .  </span>"local2"  <span class="type">IdentConstant.valor</span>             <span class="pos">23:12  23:17 </span><span class="sourceText">local &&= </span><span class="posText">local2</span><span class="sourceText">;</span>
+<span class="dots">.  .  |  .  </span>Print &rarr;                                         <span class="pos">24:10  24:14 </span><span class="sourceText">println(</span><span class="posText">local</span><span class="sourceText">);</span>
+<span class="dots">.  .  |  .  |  </span>"local"  <span class="type">IdentConstant.valor</span>                 <span class="pos">24:10  24:14 </span><span class="sourceText">println(</span><span class="posText">local</span><span class="sourceText">);</span>
 <span class="dots">.  .  |  .  |  </span>"<span class="value">ln</span>"  
 
 [ASTPrinter] --------------------------------
