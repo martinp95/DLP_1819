@@ -44,7 +44,7 @@ public class CodeSelection extends DefaultVisitor {
 		return null;
 	}
 
-//  class Campo { String nombre;  Tipo tipo; }
+	// class Campo { String nombre; Tipo tipo; }
 	public Object visit(Campo node, Object param) {
 		out("push " + node.getDireccion());
 		return null;
@@ -100,21 +100,49 @@ public class CodeSelection extends DefaultVisitor {
 		out("#line " + node.getEnd().getLine());
 
 		if (node.getTipoPrint().equals("")) {
-			node.getImprime().accept(this, Funcion.VALOR);
-			out("out" + node.getImprime().getTipo().getSufijo());
+			if (!(node.getImprime().getTipo() instanceof ArrayType)) {
+				node.getImprime().accept(this, Funcion.VALOR);
+				out("out" + node.getImprime().getTipo().getSufijo());
+			} else {
+				int indiceArray = Integer.parseInt(((ArrayType) node.getImprime().getTipo()).getPosicion());
+				for (int i = 0; i < indiceArray; i++) {
+					visit(new Array(node.getImprime(), new IntConstant(i + "")), Funcion.VALOR);
+					out("out" + node.getImprime().getTipo().getSufijo());
+				}
+			}
 		} else if (node.getTipoPrint().equals("ln") && node.getImprime() == null) {
 			out("pushb 10");
 			out("outb");
 		} else if (node.getTipoPrint().equals("ln") && node.getImprime() != null) {
-			node.getImprime().accept(this, Funcion.VALOR);
-			out("out" + node.getImprime().getTipo().getSufijo());
-			out("pushb 10");
-			out("outb");
+			if (!(node.getImprime().getTipo() instanceof ArrayType)) {
+				node.getImprime().accept(this, Funcion.VALOR);
+				out("out" + node.getImprime().getTipo().getSufijo());
+				out("pushb 10");
+				out("outb");
+			} else {
+				int indiceArray = Integer.parseInt(((ArrayType) node.getImprime().getTipo()).getPosicion());
+				for (int i = 0; i < indiceArray; i++) {
+					visit(new Array(node.getImprime(), new IntConstant(i + "")), Funcion.VALOR);
+					out("out" + node.getImprime().getTipo().getSufijo());
+				}
+				out("pushb 10");
+				out("outb");
+			}
 		} else if (node.getTipoPrint().equals("sp")) {
-			node.getImprime().accept(this, Funcion.VALOR);
-			out("out" + node.getImprime().getTipo().getSufijo());
-			out("pushb 32");
-			out("outb");
+			if (!(node.getImprime().getTipo() instanceof ArrayType)) {
+				node.getImprime().accept(this, Funcion.VALOR);
+				out("out" + node.getImprime().getTipo().getSufijo());
+				out("pushb 32");
+				out("outb");
+			} else {
+				int indiceArray = Integer.parseInt(((ArrayType) node.getImprime().getTipo()).getPosicion());
+				for (int i = 0; i < indiceArray; i++) {
+					visit(new Array(node.getImprime(), new IntConstant(i + "")), Funcion.VALOR);
+					out("out" + node.getImprime().getTipo().getSufijo());
+				}
+				out("pushb 32");
+				out("outb");
+			}
 		}
 
 		return null;
@@ -132,9 +160,18 @@ public class CodeSelection extends DefaultVisitor {
 	// class Asignacion { Expr left; Expr right; }
 	public Object visit(Asignacion node, Object param) {
 		out("#line " + node.getEnd().getLine());
-		node.getLeft().accept(this, Funcion.DIRECCION);
-		node.getRight().accept(this, Funcion.VALOR);
-		out("store" + node.getLeft().getTipo().getSufijo());
+		if (!(node.getLeft().getTipo() instanceof ArrayType)) {
+			node.getLeft().accept(this, Funcion.DIRECCION);
+			node.getRight().accept(this, Funcion.VALOR);
+			out("store" + node.getLeft().getTipo().getSufijo());
+		} else {
+			int indiceArray = Integer.parseInt(((ArrayType) node.getLeft().getTipo()).getPosicion());
+			for (int i = 0; i < indiceArray; i++) {
+				visit(new Array(node.getLeft(), new IntConstant(i + "")), Funcion.DIRECCION);
+				visit(new Array(node.getRight(), new IntConstant(i + "")), Funcion.VALOR);
+				out("store" + node.getLeft().getTipo().getSufijo());
+			}
+		}
 		return null;
 	}
 
