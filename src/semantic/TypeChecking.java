@@ -100,8 +100,13 @@ public class TypeChecking extends DefaultVisitor {
 
 		predicado(isIgualTipo(node.getLeft().getTipo(), node.getRight().getTipo()), "Valores de distinto tipo", node);
 		predicado(node.getLeft().isModificable(), "Valor de la izquierda no modificable", node);
-		predicado(isSimple(node.getLeft().getTipo()), "Valor de la izquierda debe de ser simple", node);
-
+		predicado(isImprimibleOrAsignable(node.getLeft().getTipo()),
+				"Valor de la izquierda debe de ser simple o array de tipo char", node);
+		if (node.getLeft().getTipo() instanceof ArrayType) {
+			predicado(isArraySizeAsignable(node.getLeft().getTipo(), node.getRight().getTipo()),
+					"El array de origen debe de tener un numero de caracteres superior o igual al numero de caracteres del array de destino",
+					node);
+		}
 		return null;
 	}
 
@@ -184,7 +189,10 @@ public class TypeChecking extends DefaultVisitor {
 		if (node.getImprime() != null)
 			node.getImprime().accept(this, param);
 
-		predicado(isSimple(node.getImprime().getTipo()), "Debe ser tipo simple", node);
+		// predicado(isSimple(node.getImprime().getTipo()), "Debe ser tipo simple",
+		// node);
+		predicado(isImprimibleOrAsignable(node.getImprime().getTipo()), "Debe ser tipo simple, o array de tipo char",
+				node);
 		return null;
 	}
 
@@ -347,10 +355,12 @@ public class TypeChecking extends DefaultVisitor {
 	 * quiere imprimir la posición del fichero, se puede omitir el tercer argumento
 	 * (ejemplo 3).
 	 *
-	 * @param condicion     Debe cumplirse para que no se produzca un error
-	 * @param mensajeError  Se imprime si no se cumple la condición
-	 * @param posicionError Fila y columna del fichero donde se ha producido el
-	 *                      error.
+	 * @param condicion
+	 *            Debe cumplirse para que no se produzca un error
+	 * @param mensajeError
+	 *            Se imprime si no se cumple la condición
+	 * @param posicionError
+	 *            Fila y columna del fichero donde se ha producido el error.
 	 */
 	private void predicado(boolean condicion, String mensajeError, Position posicionError) {
 		if (!condicion)
@@ -367,6 +377,25 @@ public class TypeChecking extends DefaultVisitor {
 
 	private boolean isIgualTipo(Tipo tipo1, Tipo tipo2) {
 		return tipo1 != null && tipo2 != null ? tipo1.getClass().isAssignableFrom(tipo2.getClass()) : false;
+	}
+
+	private boolean isImprimibleOrAsignable(Tipo tipo) {
+		if (tipo instanceof CharType || tipo instanceof IntType || tipo instanceof FloatType) {
+			return true;
+		} else if (tipo instanceof ArrayType) {
+			if (((ArrayType) tipo).getTipo() instanceof CharType) {
+				return true;
+			} else {
+				return false;
+			}
+		} else {
+			return false;
+		}
+	}
+
+	private boolean isArraySizeAsignable(Tipo left, Tipo right) {
+		return (Integer.parseInt(((ArrayType) right).getPosicion()) >= Integer
+				.parseInt(((ArrayType) left).getPosicion()));
 	}
 
 	private ErrorManager errorManager;
