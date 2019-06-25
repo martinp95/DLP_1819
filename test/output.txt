@@ -254,6 +254,7 @@ ret 0, 2, 0
 #line 60
 main:
 enter 4
+#line 64
 call p
 #line 66
 pusha BP
@@ -289,10 +290,12 @@ call f
 outi
 pushb 10
 outb
+#line 71
 pushf 1.3
 pushi 2
 call f
 pop
+#line 73
 call inicializa
 #line 74
 pusha BP

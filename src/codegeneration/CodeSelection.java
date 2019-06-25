@@ -185,6 +185,7 @@ public class CodeSelection extends DefaultVisitor {
 
 	// class LlamadaFuncion { String nombre; List<Expr> parametrosOpt; }
 	public Object visit(LlamadaFuncion node, Object param) {
+		out("#line " + node.getStart().getLine());
 		if (node.getParametrosOpt() != null)
 			visitChildren(node.getParametrosOpt(), Funcion.VALOR);
 		out("call " + node.getNombre());
